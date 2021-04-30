@@ -5,25 +5,10 @@ function ellipticParaboloid(x,y) {return (x*x + y*y);}
 function projectU(u, v) {return u;}
 function projectV(u, v) {return v;}
 
-const torusA = 4;
-const torusB = 1;
-
-function torusX(u,v) {return (torusA + torusB*Math.cos(v))*Math.cos(u);}
-function torusY(u,v) {return (torusA + torusB*Math.cos(v))*Math.sin(u);}
-function torusZ(u,v) {return torusB*Math.sin(v);}
-
-let gridCount = 5;
+let gridCount = 7;
 let gridRange = {min:-gridCount, max:gridCount};
 let circleRange = {min:0, max:2*Math.PI};
 
-let surfaceTorus = {
-    xFunction: torusX,
-    yFunction: torusY,
-    zFunction: torusZ,
-    uRange: circleRange,
-    vRange: circleRange,
-    stroke: 0xffffff
-};
 
 class ZSurface {
     constructor(zFunction, xMin, xMax, yMin, yMax) {
@@ -51,11 +36,25 @@ class ZSurface {
 
 let surfaceHyperbolicParaboloid = new ZSurface(hyperbolicParaboloid);
 let surfaceEllipticParaboloid = new ZSurface(ellipticParaboloid);
+let surfacePlane = new ZSurface(z => 4);
+
+
+class Torus {
+    constructor(x, y, z, a, b) {
+        this.xFunction = function(u,v) {return x + (a + b*Math.cos(v))*Math.cos(u);}
+        this.yFunction = function(u,v) {return y + (a + b*Math.cos(v))*Math.sin(u);}
+        this.zFunction = function(u,v) {return z + b*Math.sin(v);}
+        this.uRange = circleRange;
+        this.vRange = circleRange;
+    }
+}
+
+let surfaceTorus = new Torus(0, 0, 0, 5, 1);
+
 
 
 let rangeMax;
 let gridSize;
-
 
 let currentSurface = surfaceEllipticParaboloid;
 
@@ -198,6 +197,10 @@ function keyPressed()
     else if (key == 'e')
     {
         currentSurface = surfaceEllipticParaboloid;
+    }
+    else if (key == 'p')
+    {
+        currentSurface = surfacePlane;
     }
     else if (key == 't')
     {
