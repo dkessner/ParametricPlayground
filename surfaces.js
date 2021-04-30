@@ -21,7 +21,8 @@ let surfaceHyperbolicParaboloid = {
     yFunction: projectV,
     zFunction: hyperbolicParaboloid,
     uRange: gridRange,
-    vRange: gridRange 
+    vRange: gridRange,
+    stroke: 0xffffff
 };
 
 let surfaceEllipticParaboloid = {
@@ -29,7 +30,8 @@ let surfaceEllipticParaboloid = {
     yFunction: projectV,
     zFunction: ellipticParaboloid,
     uRange: gridRange,
-    vRange: gridRange 
+    vRange: gridRange,
+    stroke: 0xffffff
 };
 
 let surfaceTorus = {
@@ -37,8 +39,10 @@ let surfaceTorus = {
     yFunction: torusY,
     zFunction: torusZ,
     uRange: circleRange,
-    vRange: circleRange 
+    vRange: circleRange,
+    stroke: 0xffffff
 };
+
 
 let rangeMax;
 let gridSize;
@@ -60,6 +64,8 @@ function setup()
     gridSize = rangeMax/gridCount;
 
     console.log("rangeMax:" + rangeMax);
+
+    currentSurface.stroke = color(255, 0, 0);
 } 
 
 function draw(){
@@ -144,6 +150,7 @@ function drawLineSegments(sampleCount, range, uFunction, vFunction, xFunction, y
 function drawSurface(surface)
 {
     stroke(0, 0, 255);
+    stroke(surface.stroke);
     strokeWeight(1);
     noFill();
 
@@ -186,6 +193,18 @@ function keyPressed()
     else if (key == 't')
     {
         currentSurface = surfaceTorus;
+    }
+    else if (key == 'r')
+    {
+        currentSurface.stroke = color(255, 0, 0);
+    }
+    else if (key == 'g')
+    {
+        currentSurface.stroke = color(0, 255, 00);
+    }
+    else if (key == 'b')
+    {
+        currentSurface.stroke = color(0, 0, 255);
     }
 }
 
