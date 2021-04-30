@@ -16,24 +16,6 @@ let gridCount = 5;
 let gridRange = {min:-gridCount, max:gridCount};
 let circleRange = {min:0, max:2*Math.PI};
 
-let surfaceHyperbolicParaboloid = {
-    xFunction: projectU,
-    yFunction: projectV,
-    zFunction: hyperbolicParaboloid,
-    uRange: gridRange,
-    vRange: gridRange,
-    stroke: 0xffffff
-};
-
-let surfaceEllipticParaboloid = {
-    xFunction: projectU,
-    yFunction: projectV,
-    zFunction: ellipticParaboloid,
-    uRange: gridRange,
-    vRange: gridRange,
-    stroke: 0xffffff
-};
-
 let surfaceTorus = {
     xFunction: torusX,
     yFunction: torusY,
@@ -42,6 +24,33 @@ let surfaceTorus = {
     vRange: circleRange,
     stroke: 0xffffff
 };
+
+class ZSurface {
+    constructor(zFunction, xMin, xMax, yMin, yMax) {
+        console.log(arguments);
+
+        this.xFunction = projectU;
+        this.yFunction = projectV;
+        this.zFunction = zFunction;
+
+        if (xMin in arguments) {
+            this.uRange = {min:xMin, max:xMax};
+        }
+        else {
+            this.uRange = gridRange;
+        }
+
+        if (yMin in arguments) {
+            this.vRange = {min:yMin, max:yMax};
+        }
+        else {
+            this.vRange = gridRange;
+        }
+    }
+}
+
+let surfaceHyperbolicParaboloid = new ZSurface(hyperbolicParaboloid);
+let surfaceEllipticParaboloid = new ZSurface(ellipticParaboloid);
 
 
 let rangeMax;
@@ -150,7 +159,7 @@ function drawLineSegments(sampleCount, range, uFunction, vFunction, xFunction, y
 function drawSurface(surface)
 {
     stroke(0, 0, 255);
-    stroke(surface.stroke);
+    stroke('stroke' in surface ? surface.stroke: 0xffffff);
     strokeWeight(1);
     noFill();
 
