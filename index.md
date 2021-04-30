@@ -4,11 +4,11 @@
 <script src="p5/p5.easycam.min.js"></script>
 <script src="surfaces.js"></script>
 
-# Surface Drawing
-
 <center>
 <main></main>
 </center>
+
+<br/>
 
 ### EasyCam controls
 
