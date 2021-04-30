@@ -1,17 +1,50 @@
+function hyperbolicParaboloid(x,y) {return (x*x - y*y);}
 
+function ellipticParaboloid(x,y) {return (x*x + y*y);}
 
-let rangeMax;
+function projectU(u, v) {return u;}
+function projectV(u, v) {return v;}
+
+const torusA = 4;
+const torusB = 1;
+
+function torusX(u,v) {return (torusA + torusB*Math.cos(v))*Math.cos(u);}
+function torusY(u,v) {return (torusA + torusB*Math.cos(v))*Math.sin(u);}
+function torusZ(u,v) {return torusB*Math.sin(v);}
+
 let gridCount = 5;
-let gridSize;
-
-let xFunction;
-let yFunction;
-let zFunction;
-let uRange;
-let vRange;
-
 let gridRange = {min:-gridCount, max:gridCount};
 let circleRange = {min:0, max:2*Math.PI};
+
+let surfaceHyperbolicParaboloid = {
+    xFunction: projectU,
+    yFunction: projectV,
+    zFunction: hyperbolicParaboloid,
+    uRange: gridRange,
+    vRange: gridRange 
+};
+
+let surfaceEllipticParaboloid = {
+    xFunction: projectU,
+    yFunction: projectV,
+    zFunction: ellipticParaboloid,
+    uRange: gridRange,
+    vRange: gridRange 
+};
+
+let surfaceTorus = {
+    xFunction: torusX,
+    yFunction: torusY,
+    zFunction: torusZ,
+    uRange: circleRange,
+    vRange: circleRange 
+};
+
+let rangeMax;
+let gridSize;
+
+
+let currentSurface = surfaceEllipticParaboloid;
 
 
 function setup() 
@@ -27,12 +60,6 @@ function setup()
     gridSize = rangeMax/gridCount;
 
     console.log("rangeMax:" + rangeMax);
-
-    xFunction = projectU;
-    yFunction = projectV;
-    zFunction = hyperbolicParaboloid;
-    uRange = gridRange;
-    vRange = gridRange;
 } 
 
 function draw(){
@@ -41,7 +68,7 @@ function draw(){
     initialTransformation();
     drawXYplane();
     drawAxes();
-    drawSurface(zFunction);
+    drawSurface(currentSurface);
 }
 
 
@@ -92,20 +119,6 @@ function drawXYplane()
 }
 
 
-function hyperbolicParaboloid(x,y) {return (x*x - y*y);}
-
-function ellipticParaboloid(x,y) {return (x*x + y*y);}
-
-function projectU(u, v) {return u;}
-function projectV(u, v) {return v;}
-
-const torusA = 4;
-const torusB = 1;
-
-function torusX(u,v) {return (torusA + torusB*Math.cos(v))*Math.cos(u);}
-function torusY(u,v) {return (torusA + torusB*Math.cos(v))*Math.sin(u);}
-function torusZ(u,v) {return torusB*Math.sin(v);}
-
 function indexIntoRange(i, n, range) { return range.min + i*(range.max-range.min)/n; }
 
 
@@ -128,7 +141,7 @@ function drawLineSegments(sampleCount, range, uFunction, vFunction, xFunction, y
 }
 
 
-function drawSurface()
+function drawSurface(surface)
 {
     stroke(0, 0, 255);
     strokeWeight(1);
@@ -138,24 +151,24 @@ function drawSurface()
 
     for (let i=0; i<=sampleCount; i++)
     {
-        let u = indexIntoRange(i, sampleCount, uRange);
+        let u = indexIntoRange(i, sampleCount, surface.uRange);
         let uFunction = t => u; // const
         let vFunction = t => t; // identity
 
-        drawLineSegments(sampleCount, vRange, 
+        drawLineSegments(sampleCount, surface.vRange, 
                          uFunction, vFunction, 
-                         xFunction, yFunction, zFunction);
+                         surface.xFunction, surface.yFunction, surface.zFunction);
     }
 
     for (let i=0; i<=sampleCount; i++)
     {
-        let v = indexIntoRange(i, sampleCount, vRange);
+        let v = indexIntoRange(i, sampleCount, surface.vRange);
         let vFunction = t => v; // const
         let uFunction = t => t; // identity
 
-        drawLineSegments(sampleCount, uRange, 
+        drawLineSegments(sampleCount, surface.uRange, 
                          uFunction, vFunction, 
-                         xFunction, yFunction, zFunction);
+                         surface.xFunction, surface.yFunction, surface.zFunction);
     }
 }
 
@@ -164,25 +177,15 @@ function keyPressed()
 {
     if (key == 'h')
     {
-        xFunction = projectU;
-        yFunction = projectV;
-        zFunction = hyperbolicParaboloid;
-        uRange = vRange = gridRange;
+        currentSurface = surfaceHyperbolicParaboloid;
     }
     else if (key == 'e')
     {
-        xFunction = projectU;
-        yFunction = projectV;
-        zFunction = ellipticParaboloid;
-        uRange = vRange = gridRange;
+        currentSurface = surfaceEllipticParaboloid;
     }
     else if (key == 't')
     {
-        xFunction = torusX;
-        yFunction = torusY;
-        zFunction = torusZ;
-        uRange = circleRange;
-        vRange = circleRange;
+        currentSurface = surfaceTorus;
     }
 }
 
