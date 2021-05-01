@@ -7,7 +7,7 @@ function ellipticParaboloid(x,y) {return (x*x + y*y);}
 function projectU(u, v) {return u;}
 function projectV(u, v) {return v;}
 
-let gridCount = 7;
+let gridCount = 10;
 let gridRange = [-gridCount, gridCount];
 let circleRange = [0, 2*PI];
 
@@ -100,9 +100,86 @@ let leftEye = {
 surfaces.push(leftEye);
 `;
 
+const exampleSimpleFace = `// exampleSimpleFace
+
+surfaces = [];
+
+let leftEye = {
+    xFunction: (u,v)=>u,
+    yFunction: (u,v)=>v,
+    zFunction: (u,v)=>0,
+    uRange: [-7, -3],
+    vRange: [-7, -3],
+    stroke: color(255, 0, 0)
+};
+
+surfaces.push(leftEye);
+
+let rightEye = {
+    xFunction: (u,v)=>u,
+    yFunction: (u,v)=>v,
+    zFunction: (u,v)=>0,
+    uRange: [-7, -3],
+    vRange: [3, 7],
+    stroke: color(255, 0, 0)
+};
+
+surfaces.push(rightEye);
+
+let mouth = {
+    xFunction: (u,v)=>u,
+    yFunction: (u,v)=>v,
+    zFunction: (u,v)=>0,
+    uRange: [3, 7],
+    vRange: [-5, 5],
+    stroke: color(255, 0, 0)
+};
+
+surfaces.push(mouth);
+`;
+
+
+const exampleSphereFace = `// exampleSphereFace
+
+surfaces = [];
+
+let leftEye = {
+    xFunction: (u,v)=>3*sin(u)*cos(v),
+    yFunction: (u,v)=>-5 + 3*sin(u)*sin(v),
+    zFunction: (u,v)=>5 + 3*cos(u),
+    uRange: [0, 2*PI],
+    vRange: [0, 2*PI],
+    stroke: color(0, 255, 0)
+};
+
+surfaces.push(leftEye);
+
+let rightEye = {
+    xFunction: (u,v)=>3*sin(u)*cos(v),
+    yFunction: (u,v)=>5 + 3*sin(u)*sin(v),
+    zFunction: (u,v)=>5 + 3*cos(u),
+    uRange: [0, 2*PI],
+    vRange: [0, 2*PI],
+    stroke: color(0, 255, 0)
+};
+
+surfaces.push(rightEye);
+
+let mouth = {
+    xFunction: (u,v)=>2*sin(v),
+    yFunction: (u,v)=>(9 + 2*cos(v))*cos(u),
+    zFunction: (u,v)=>(9 + 2*cos(v))*sin(u),
+    uRange: [PI, 2*PI],
+    vRange: [0, 2*PI],
+    stroke: color(0, 255, 0)
+};
+
+surfaces.push(mouth);
+`;
+
 
 function runUserCode() {
-    if (codeMirrorEditor != null) codeMirrorEditor.save();
+    if (userCodeMirrorEditor != null) userCodeMirrorEditor.save();
     userCode = document.getElementById("userCode");
     let f = new Function(userCode.value);
     f();

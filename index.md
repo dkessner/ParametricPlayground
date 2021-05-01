@@ -20,9 +20,12 @@
 </center>
 
 <button onclick="runUserCode()">Click me!</button>
+
 <textarea id="userCode"></textarea>
 
+<br/>
 
+<textarea id="exampleCode"></textarea>
 
 
 
@@ -40,15 +43,25 @@
 
 <script>
     let userCode = document.getElementById("userCode");
-    userCode.value = defaultUserCode;
+    userCode.value = exampleSimpleFace;
 
-    codeMirrorEditor = CodeMirror.fromTextArea(userCode, {
+    userCodeMirrorEditor = CodeMirror.fromTextArea(userCode, {
       lineNumbers: true,
       theme: "blackboard"
     });
 
-    codeMirrorEditor.setSize("100%", 800);
+    userCodeMirrorEditor.setSize("100%", 800);
 
+    let exampleCode = document.getElementById("exampleCode");
+    exampleCode.value = exampleSphereFace;
+
+    exampleCodeMirrorEditor = CodeMirror.fromTextArea(exampleCode, {
+      lineNumbers: true,
+      theme: "blackboard",
+      readOnly: true
+    });
+
+    exampleCodeMirrorEditor.setSize("100%", 800);
 </script>
 
 
