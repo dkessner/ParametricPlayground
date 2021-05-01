@@ -40,10 +40,10 @@ let surfacePlane = new ZSurface(z => 4);
 
 
 class Torus {
-    constructor(x, y, z, a, b) {
-        this.xFunction = function(u,v) {return x + (a + b*Math.cos(v))*Math.cos(u);}
-        this.yFunction = function(u,v) {return y + (a + b*Math.cos(v))*Math.sin(u);}
-        this.zFunction = function(u,v) {return z + b*Math.sin(v);}
+    constructor(centerX, centerY, centerZ, a, b) {
+        this.xFunction = function(u,v) {return centerX + (a + b*Math.cos(v))*Math.cos(u);}
+        this.yFunction = function(u,v) {return centerY + (a + b*Math.cos(v))*Math.sin(u);}
+        this.zFunction = function(u,v) {return centerZ + b*Math.sin(v);}
         this.uRange = circleRange;
         this.vRange = circleRange;
     }
@@ -56,7 +56,20 @@ let surfaceTorus = new Torus(0, 0, 0, 5, 1);
 let rangeMax;
 let gridSize;
 
+let surfaces = [];
+
 let currentSurface = surfaceEllipticParaboloid;
+
+
+function initializeSurfaces()
+{
+    let torus = new Torus(3, 3, 0, 2, 1);
+    torus.stroke = color(0, 255, 0);
+    surfaces.push(torus);
+    torus = new Torus(-3, -3, 0, 2, 1);
+    torus.stroke = color(0, 0, 255);
+    surfaces.push(torus);
+}
 
 
 function setup() 
@@ -74,6 +87,8 @@ function setup()
     console.log("rangeMax:" + rangeMax);
 
     currentSurface.stroke = color(255, 0, 0);
+
+    initializeSurfaces();
 } 
 
 function draw(){
@@ -82,7 +97,9 @@ function draw(){
     initialTransformation();
     drawXYplane();
     drawAxes();
-    drawSurface(currentSurface);
+
+    for (surface of surfaces)
+        drawSurface(surface);
 }
 
 
@@ -192,19 +209,19 @@ function keyPressed()
 {
     if (key == 'h')
     {
-        currentSurface = surfaceHyperbolicParaboloid;
+        surfaces.push(surfaceHyperbolicParaboloid);
     }
     else if (key == 'e')
     {
-        currentSurface = surfaceEllipticParaboloid;
+        surfaces.push(surfaceEllipticParaboloid);
     }
     else if (key == 'p')
     {
-        currentSurface = surfacePlane;
+        surfaces.push(surfacePlane);
     }
     else if (key == 't')
     {
-        currentSurface = surfaceTorus;
+        surfaces.push(surfaceTorus);
     }
     else if (key == 'r')
     {
