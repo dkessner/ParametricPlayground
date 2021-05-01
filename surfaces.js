@@ -80,6 +80,11 @@ for (let j=0; j<5; j++) {
   surfaces.push(new Torus(j, j, j, 1, .5));
   surfaces[j].stroke = color(0, 255*(5-j)/5, 255*(j+1)/5);
 }
+
+surfaces.push(surfaceEllipticParaboloid);
+surfaceEllipticParaboloid.stroke = color(0, 255, 0);
+
+
 `;
 
 
