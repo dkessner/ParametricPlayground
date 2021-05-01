@@ -60,6 +60,8 @@ let surfaces = [];
 
 let currentSurface = surfaceEllipticParaboloid;
 
+let codeMirrorEditor;
+
 
 function initializeSurfaces()
 {
@@ -81,7 +83,9 @@ for (let j=0; j<5; j++) {
   surfaces[j].stroke = color(0, 255*(5-j)/5, 255*(j+1)/5);
 }
 
-surfaces.push(surfaceEllipticParaboloid);
+
+//surfaces.push(surfaceEllipticParaboloid);
+surfaces.push(new ZSurface(ellipticParaboloid));
 surfaceEllipticParaboloid.stroke = color(0, 255, 0);
 
 
@@ -89,9 +93,11 @@ surfaceEllipticParaboloid.stroke = color(0, 255, 0);
 
 
 function runUserCode() {
+    if (codeMirrorEditor != null) codeMirrorEditor.save();
     userCode = document.getElementById("userCode");
     let f = new Function(userCode.value);
-    console.log("userCode: " + f());
+    f();
+    console.log("userCode: " + f);
 }
 
 

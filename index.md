@@ -34,12 +34,16 @@
 
 
 <!-- codemirror -->
+
 <script>
     let userCode = document.getElementById("userCode");
     userCode.value = defaultUserCode;
-    let editor = CodeMirror.fromTextArea(userCode, {
+
+    codeMirrorEditor = CodeMirror.fromTextArea(userCode, {
       lineNumbers: true,
       theme: "blackboard"
-  });
+    });
 </script>
+
+
 
