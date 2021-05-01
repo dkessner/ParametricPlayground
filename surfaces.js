@@ -66,9 +66,16 @@ function initializeSurfaces()
     let torus = new Torus(3, 3, 0, 2, 1);
     torus.stroke = color(0, 255, 0);
     surfaces.push(torus);
+
     torus = new Torus(-3, -3, 0, 2, 1);
     torus.stroke = color(0, 0, 255);
     surfaces.push(torus);
+}
+
+function runUserCode() {
+    userCode = document.getElementById("userCode");
+    let f = new Function(userCode.value);
+    console.log("userCode: " + f());
 }
 
 
