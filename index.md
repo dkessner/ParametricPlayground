@@ -14,14 +14,17 @@
 
 <!-- content -->
 
-<textarea id="userCode" rows="10" cols="80" style="background-color:#000; color:#eaeaea">
-</textarea>
-
-<button onclick="runUserCode()">Click me!</button>
 
 <center>
 <main></main>
 </center>
+
+<button onclick="runUserCode()">Click me!</button>
+<textarea id="userCode"></textarea>
+
+
+
+
 
 <br/>
 
@@ -43,6 +46,9 @@
       lineNumbers: true,
       theme: "blackboard"
     });
+
+    codeMirrorEditor.setSize("100%", 800);
+
 </script>
 
 
