@@ -1,3 +1,5 @@
+new p5(); // on demand global mode
+
 function hyperbolicParaboloid(x,y) {return (x*x - y*y);}
 
 function ellipticParaboloid(x,y) {return (x*x + y*y);}
@@ -6,8 +8,8 @@ function projectU(u, v) {return u;}
 function projectV(u, v) {return v;}
 
 let gridCount = 7;
-let gridRange = {min:-gridCount, max:gridCount};
-let circleRange = {min:0, max:2*Math.PI};
+let gridRange = [-gridCount, gridCount];
+let circleRange = [0, 2*PI];
 
 
 class ZSurface {
@@ -19,14 +21,14 @@ class ZSurface {
         this.zFunction = zFunction;
 
         if (xMin in arguments) {
-            this.uRange = {min:xMin, max:xMax};
+            this.uRange = [xMin, xMax];
         }
         else {
             this.uRange = gridRange;
         }
 
         if (yMin in arguments) {
-            this.vRange = {min:yMin, max:yMax};
+            this.vRange = [yMin, yMax];
         }
         else {
             this.vRange = gridRange;
@@ -41,9 +43,9 @@ let surfacePlane = new ZSurface(z => 4);
 
 class Torus {
     constructor(centerX, centerY, centerZ, a, b) {
-        this.xFunction = function(u,v) {return centerX + (a + b*Math.cos(v))*Math.cos(u);}
-        this.yFunction = function(u,v) {return centerY + (a + b*Math.cos(v))*Math.sin(u);}
-        this.zFunction = function(u,v) {return centerZ + b*Math.sin(v);}
+        this.xFunction = function(u,v) {return centerX + (a + b*cos(v))*cos(u);}
+        this.yFunction = function(u,v) {return centerY + (a + b*cos(v))*sin(u);}
+        this.zFunction = function(u,v) {return centerZ + b*sin(v);}
         this.uRange = circleRange;
         this.vRange = circleRange;
     }
@@ -57,8 +59,6 @@ let rangeMax;
 let gridSize;
 
 let surfaces = [];
-
-let currentSurface = surfaceEllipticParaboloid;
 
 let codeMirrorEditor;
 
@@ -88,7 +88,16 @@ for (let j=0; j<5; j++) {
 surfaces.push(new ZSurface(ellipticParaboloid));
 surfaceEllipticParaboloid.stroke = color(0, 255, 0);
 
+let leftEye = {
+    xFunction: (u,v)=>3*sin(u)*cos(v),
+    yFunction: (u,v)=>-3 + 3*sin(u)*sin(v),
+    zFunction: (u,v)=>3 + 3*cos(u),
+    uRange: [0, 2*PI],
+    vRange: [0, 2*PI],
+    stroke: color(255, 0, 0)
+};
 
+surfaces.push(leftEye);
 `;
 
 
@@ -114,8 +123,6 @@ function setup()
     gridSize = rangeMax/gridCount;
 
     console.log("rangeMax:" + rangeMax);
-
-    currentSurface.stroke = color(255, 0, 0);
 
     initializeSurfaces();
 } 
@@ -179,7 +186,7 @@ function drawXYplane()
 }
 
 
-function indexIntoRange(i, n, range) { return range.min + i*(range.max-range.min)/n; }
+function indexIntoRange(i, n, range) { return range[0] + i*(range[1]-range[0])/n; }
 
 
 function drawLineSegments(sampleCount, range, uFunction, vFunction, xFunction, yFunction, zFunction)
@@ -251,18 +258,6 @@ function keyPressed()
     else if (key == 't')
     {
         surfaces.push(surfaceTorus);
-    }
-    else if (key == 'r')
-    {
-        currentSurface.stroke = color(255, 0, 0);
-    }
-    else if (key == 'g')
-    {
-        currentSurface.stroke = color(0, 255, 00);
-    }
-    else if (key == 'b')
-    {
-        currentSurface.stroke = color(0, 0, 255);
     }
 }
 
