@@ -21,11 +21,13 @@
 <main></main>
 </center>
 
-<button onclick="runUserCode()">Click me!</button>
+<button onclick="runUserCode()">Run code!</button>
 
 <textarea id="userCode"></textarea>
 
 <br/>
+
+<select id="selectExample"></select>
 
 <textarea id="exampleCode"></textarea>
 
@@ -66,5 +68,8 @@
     exampleCodeMirrorEditor.setSize("100%", 800);
 </script>
 
+<script>
+    initializeExampleList();
+</script>
 
 

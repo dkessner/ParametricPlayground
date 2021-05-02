@@ -16,12 +16,30 @@ let codeMirrorEditor;
 
 function runUserCode() {
     if (userCodeMirrorEditor != null) userCodeMirrorEditor.save();
-    userCode = document.getElementById("userCode");
+    let userCode = document.getElementById("userCode");
     let f = new Function(userCode.value);
     f();
     console.log("userCode: " + f);
 }
 
+
+function initializeExampleList() {
+    let selectExample = document.getElementById("selectExample");
+    selectExample.addEventListener('change', selectExampleOnChange);
+
+    let option = document.createElement("option");
+    option.text = "simple face";
+    selectExample.add(option);
+
+    option = document.createElement("option");
+    option.text = "sphere face";
+    selectExample.add(option);
+}
+
+
+function selectExampleOnChange() {
+    console.log("we're here!");
+}
 
 
 function setup() 
