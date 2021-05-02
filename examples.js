@@ -54,23 +54,7 @@ class Torus {
 
 let surfaceTorus = new Torus(0, 0, 0, 5, 1);
 
-
-function initializeSurfaces()
-{
-    surfaces = [];
-
-    let xyPlane = {
-        xFunction: (x,y)=>x,
-        yFunction: (x,y)=>y,
-        zFunction: (x,y)=>0,
-        uRange: gridRange,
-        vRange: gridRange,
-        stroke: color(128),
-        sampleCount: 20
-    };
-
-    surfaces.push(xyPlane);
-
+/*
     let torus = new Torus(3, 3, 0, 2, 1);
     torus.stroke = color(0, 255, 0);
     surfaces.push(torus);
@@ -78,42 +62,50 @@ function initializeSurfaces()
     torus = new Torus(-3, -3, 0, 2, 1);
     torus.stroke = color(0, 0, 255);
     surfaces.push(torus);
-}
+*/
 
 
-let defaultUserCode = `
+const exampleHello = `// hello
+
 surfaces = [];
 
-for (let j=0; j<5; j++) {
-  surfaces.push(new Torus(j, j, j, 1, .5));
-  surfaces[j].stroke = color(0, 255*(5-j)/5, 255*(j+1)/5);
-}
-
-
-//surfaces.push(surfaceEllipticParaboloid);
-surfaces.push(new ZSurface(ellipticParaboloid));
-surfaceEllipticParaboloid.stroke = color(0, 255, 0);
-
-let leftEye = {
-    xFunction: (u,v)=>3*sin(u)*cos(v),
-    yFunction: (u,v)=>-3 + 3*sin(u)*sin(v),
-    zFunction: (u,v)=>3 + 3*cos(u),
-    uRange: [0, 2*PI],
-    vRange: [0, 2*PI],
-    stroke: color(255, 0, 0)
+let xyPlane = {
+    xFunction: (x,y)=>x,
+    yFunction: (x,y)=>y,
+    zFunction: (x,y)=>0,
+    uRange: gridRange,
+    vRange: gridRange,
+    stroke: color(128),
+    sampleCount: 20
 };
 
-surfaces.push(leftEye);
+surfaces.push(xyPlane);
+
+let square = {
+    xFunction: (x,y)=>x,
+    yFunction: (x,y)=>y,
+    zFunction: (x,y)=>3,
+    uRange: [-1, 1],
+    vRange: [-1, 1],
+    stroke: color(0, 255, 0),
+    sampleCount: 10
+};
+
+surfaces.push(square);
 `;
 
-const exampleSimpleFace = `// exampleSimpleFace
+
+initializeSurfaces = new Function(exampleHello);
+
+
+const exampleSimpleFace = `// simple face
 
 surfaces = [];
 
 let leftEye = {
-    xFunction: (u,v)=>u,
-    yFunction: (u,v)=>v,
-    zFunction: (u,v)=>0,
+    xFunction: (x,y)=>x,
+    yFunction: (x,y)=>y,
+    zFunction: (x,y)=>0,
     uRange: [-7, -3],
     vRange: [-7, -3],
     stroke: color(255, 0, 0)
@@ -122,9 +114,9 @@ let leftEye = {
 surfaces.push(leftEye);
 
 let rightEye = {
-    xFunction: (u,v)=>u,
-    yFunction: (u,v)=>v,
-    zFunction: (u,v)=>0,
+    xFunction: (x,y)=>x,
+    yFunction: (x,y)=>y,
+    zFunction: (x,y)=>0,
     uRange: [-7, -3],
     vRange: [3, 7],
     stroke: color(255, 0, 0)
@@ -133,9 +125,9 @@ let rightEye = {
 surfaces.push(rightEye);
 
 let mouth = {
-    xFunction: (u,v)=>u,
-    yFunction: (u,v)=>v,
-    zFunction: (u,v)=>0,
+    xFunction: (x,y)=>x,
+    yFunction: (x,y)=>y,
+    zFunction: (x,y)=>0,
     uRange: [3, 7],
     vRange: [-5, 5],
     stroke: color(255, 0, 0)
@@ -145,7 +137,7 @@ surfaces.push(mouth);
 `;
 
 
-const exampleSphereFace = `// exampleSphereFace
+const exampleSphereFace = `// sphere face
 
 surfaces = [];
 
@@ -185,6 +177,7 @@ surfaces.push(mouth);
 `;
 
 const examples = [
+    {name: "hello", code: exampleHello},
     {name: "simple face", code: exampleSimpleFace},
     {name: "sphere face", code: exampleSphereFace}
 ];

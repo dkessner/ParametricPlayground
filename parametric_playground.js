@@ -27,15 +27,15 @@ function runExampleCode() {
 
 function initializeCodeMirror() {
     let userCode = document.getElementById("userCode");
-    userCode.value = exampleSimpleFace;
-
     userCodeMirrorEditor = CodeMirror.fromTextArea(userCode, {
       lineNumbers: true,
       theme: "blackboard"
     });
 
     userCodeMirrorEditor.setSize("100%", 800);
+    userCodeMirrorEditor.setValue(examples[0].code);
 
+    let exampleCode = document.getElementById("exampleCode");
     exampleCodeMirrorEditor = CodeMirror.fromTextArea(exampleCode, {
       lineNumbers: true,
       theme: "blackboard",
