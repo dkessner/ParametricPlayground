@@ -88,7 +88,6 @@ function draw(){
     background(0);
    
     initialTransformation();
-    drawXYplane();
     drawAxes();
 
     for (surface of surfaces)
@@ -172,7 +171,7 @@ function drawSurface(surface)
     strokeWeight(1);
     noFill();
 
-    let sampleCount = 40;
+    let sampleCount = 'sampleCount' in surface ? surface.sampleCount : 20;
 
     for (let i=0; i<=sampleCount; i++)
     {

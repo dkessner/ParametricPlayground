@@ -57,6 +57,20 @@ let surfaceTorus = new Torus(0, 0, 0, 5, 1);
 
 function initializeSurfaces()
 {
+    surfaces = [];
+
+    let xyPlane = {
+        xFunction: (x,y)=>x,
+        yFunction: (x,y)=>y,
+        zFunction: (x,y)=>0,
+        uRange: gridRange,
+        vRange: gridRange,
+        stroke: color(128),
+        sampleCount: 20
+    };
+
+    surfaces.push(xyPlane);
+
     let torus = new Torus(3, 3, 0, 2, 1);
     torus.stroke = color(0, 255, 0);
     surfaces.push(torus);
@@ -163,7 +177,8 @@ let mouth = {
     zFunction: (u,v)=>(9 + 2*cos(v))*sin(u),
     uRange: [PI, 2*PI],
     vRange: [0, 2*PI],
-    stroke: color(0, 255, 0)
+    stroke: color(0, 255, 0),
+    sampleCount: 40
 };
 
 surfaces.push(mouth);
