@@ -16,11 +16,13 @@ let exampleCodeMirrorEditor;
 
 
 function runUserCode() {
-    if (userCodeMirrorEditor != null) userCodeMirrorEditor.save();
-    let userCode = document.getElementById("userCode");
-    let f = new Function(userCode.value);
+    let f = new Function(userCodeMirrorEditor.getValue());
     f();
-    console.log("userCode: " + f);
+}
+
+function runExampleCode() {
+    let f = new Function(exampleCodeMirrorEditor.getValue());
+    f();
 }
 
 function initializeCodeMirror() {
@@ -34,9 +36,6 @@ function initializeCodeMirror() {
 
     userCodeMirrorEditor.setSize("100%", 800);
 
-    let exampleCode = document.getElementById("exampleCode");
-    exampleCode.value = exampleSphereFace;
-
     exampleCodeMirrorEditor = CodeMirror.fromTextArea(exampleCode, {
       lineNumbers: true,
       theme: "blackboard",
@@ -44,26 +43,23 @@ function initializeCodeMirror() {
     });
 
     exampleCodeMirrorEditor.setSize("100%", 800);
+    exampleCodeMirrorEditor.setValue(examples[0].code);
 }
 
 function initializeExampleList() {
     let selectExample = document.getElementById("selectExample");
     selectExample.addEventListener('change', selectExampleOnChange);
 
-    let option = document.createElement("option");
-    option.text = "simple face";
-    selectExample.add(option);
+    for (example of examples) {
+        let option = document.createElement("option");
+        option.text = example.name;
+        selectExample.add(option);
+    }
 
-    option = document.createElement("option");
-    option.text = "sphere face";
-    selectExample.add(option);
 }
-
 
 function selectExampleOnChange() {
     let selectExample = document.getElementById("selectExample");
-    console.log("we're here! " + selectExample.selectedIndex);
-
     exampleCodeMirrorEditor.setValue(examples[selectExample.selectedIndex].code);
 }
 

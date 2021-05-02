@@ -28,6 +28,7 @@
 <br/>
 
 <select id="selectExample"></select>
+<button onclick="runExampleCode()">Run example</button>
 
 <textarea id="exampleCode"></textarea>
 
