@@ -1,5 +1,5 @@
 //
-// surfaces.js
+// examples.js
 //
 
 function hyperbolicParaboloid(x,y) {return (x*x - y*y);}
@@ -9,7 +9,6 @@ function ellipticParaboloid(x,y) {return (x*x + y*y);}
 function projectU(u, v) {return u;}
 function projectV(u, v) {return v;}
 
-let gridCount = 10;
 let gridRange = [-gridCount, gridCount];
 let circleRange = [0, 2*PI];
 

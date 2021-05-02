@@ -5,7 +5,7 @@
 <script src="p5/p5.easycam.min.js"></script>
 
 <script src="parametric_playground.js"></script>
-<script src="surfaces.js"></script>
+<script src="examples.js"></script>
 
 <!-- codemirror -->
 <link rel="stylesheet" href="codemirror/lib/codemirror.css">
