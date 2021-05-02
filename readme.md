@@ -1,4 +1,4 @@
-# p5 examples
+# Parametric Playground
 
-[Live website](https://dkessner.github.io/SurfaceDrawing)
+[Live website](https://dkessner.github.io/ParametricPlayground)
 
