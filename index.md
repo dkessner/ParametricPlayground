@@ -43,32 +43,8 @@
 * reset: double-click
 
 
-<!-- codemirror -->
-
 <script>
-    let userCode = document.getElementById("userCode");
-    userCode.value = exampleSimpleFace;
-
-    userCodeMirrorEditor = CodeMirror.fromTextArea(userCode, {
-      lineNumbers: true,
-      theme: "blackboard"
-    });
-
-    userCodeMirrorEditor.setSize("100%", 800);
-
-    let exampleCode = document.getElementById("exampleCode");
-    exampleCode.value = exampleSphereFace;
-
-    exampleCodeMirrorEditor = CodeMirror.fromTextArea(exampleCode, {
-      lineNumbers: true,
-      theme: "blackboard",
-      readOnly: true
-    });
-
-    exampleCodeMirrorEditor.setSize("100%", 800);
-</script>
-
-<script>
+    initializeCodeMirror();
     initializeExampleList();
 </script>
 
