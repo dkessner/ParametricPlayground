@@ -169,4 +169,9 @@ let mouth = {
 surfaces.push(mouth);
 `;
 
+const examples = [
+    {name: "simple face", code: exampleSimpleFace},
+    {name: "sphere face", code: exampleSphereFace}
+];
+
 

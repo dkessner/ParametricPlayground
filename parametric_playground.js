@@ -61,7 +61,8 @@ function initializeExampleList() {
 
 
 function selectExampleOnChange() {
-    console.log("we're here!");
+    let selectExample = document.getElementById("selectExample");
+    console.log("we're here! " + selectExample.selectedIndex);
 }
 
 
