@@ -17,22 +17,18 @@
 <!-- content -->
 
 
+<textarea id="userCode"></textarea>
+
+<button onclick="runUserCode()">Run code!</button>
+
 <center>
 <main></main>
 </center>
 
-<button onclick="runUserCode()">Run code!</button>
-
-<textarea id="userCode"></textarea>
-
-<br/>
-
-<select id="selectExample"></select>
+Examples: <select id="selectExample"></select>
 <button onclick="runExampleCode()">Run example</button>
 
 <textarea id="exampleCode"></textarea>
-
-
 
 <br/>
 
