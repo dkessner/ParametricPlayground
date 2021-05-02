@@ -3,6 +3,8 @@
 <!-- p5 -->
 <script src="p5/p5.min.js"></script>
 <script src="p5/p5.easycam.min.js"></script>
+
+<script src="parametric_playground.js"></script>
 <script src="surfaces.js"></script>
 
 <!-- codemirror -->
