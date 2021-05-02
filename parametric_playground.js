@@ -63,8 +63,11 @@ function initializeExampleList() {
 function selectExampleOnChange() {
     let selectExample = document.getElementById("selectExample");
     console.log("we're here! " + selectExample.selectedIndex);
+
+    exampleCodeMirrorEditor.setValue(examples[selectExample.selectedIndex].code);
 }
 
+// p5 sketch
 
 function setup() 
 { 
