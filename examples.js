@@ -67,19 +67,39 @@ let surfaceTorus = new Torus(0, 0, 0, 5, 1);
 
 const exampleHello = `// hello
 
+// clear the list of surfaces
+
 surfaces = [];
+
+// Define each surface by its parametric equations
+//   x(u,v), y(u,v), z(u,v). 
+// and the limits for u and v.
+
+// If your surface is of the form z=f(x,y), you can let x=u and y=v.
+
+// Optional: 
+//  'stroke' is a greyscale value or color triple [R, G, B] (all values 0-255).  
+//  'sampleCount' is the number of subdivisions along each segment
+//
+// You can call your surface (almost) anything you like.  This one is called
+// 'xyPlane'.
+//
 
 let xyPlane = {
     xFunction: (x,y)=>x,
     yFunction: (x,y)=>y,
-    zFunction: (x,y)=>0,
-    uRange: gridRange,
-    vRange: gridRange,
-    stroke: color(128),
+    zFunction: (x,y)=>0,    // z = 0
+    uRange: [-10, 10],
+    vRange: [-10, 10],
+    stroke: 128,
     sampleCount: 20
 };
 
+// add your surface to the list of surfaces
+
 surfaces.push(xyPlane);
+
+// add more!
 
 let square = {
     xFunction: (x,y)=>x,
@@ -87,7 +107,7 @@ let square = {
     zFunction: (x,y)=>3,
     uRange: [-1, 1],
     vRange: [-1, 1],
-    stroke: color(0, 255, 0),
+    stroke: [0, 255, 0],
     sampleCount: 10
 };
 
@@ -108,7 +128,7 @@ let leftEye = {
     zFunction: (x,y)=>0,
     uRange: [-7, -3],
     vRange: [-7, -3],
-    stroke: color(255, 0, 0)
+    stroke: [255, 0, 0]
 };
 
 surfaces.push(leftEye);
@@ -119,7 +139,7 @@ let rightEye = {
     zFunction: (x,y)=>0,
     uRange: [-7, -3],
     vRange: [3, 7],
-    stroke: color(255, 0, 0)
+    stroke: [0, 255, 0]
 };
 
 surfaces.push(rightEye);
@@ -130,7 +150,7 @@ let mouth = {
     zFunction: (x,y)=>0,
     uRange: [3, 7],
     vRange: [-5, 5],
-    stroke: color(255, 0, 0)
+    stroke: [0, 0, 255]
 };
 
 surfaces.push(mouth);
@@ -147,7 +167,7 @@ let leftEye = {
     zFunction: (u,v)=>5 + 3*cos(u),
     uRange: [0, 2*PI],
     vRange: [0, 2*PI],
-    stroke: color(0, 255, 0)
+    stroke: [255, 0, 0]
 };
 
 surfaces.push(leftEye);
@@ -158,7 +178,7 @@ let rightEye = {
     zFunction: (u,v)=>5 + 3*cos(u),
     uRange: [0, 2*PI],
     vRange: [0, 2*PI],
-    stroke: color(0, 255, 0)
+    stroke: [0, 255, 0]
 };
 
 surfaces.push(rightEye);
@@ -169,7 +189,7 @@ let mouth = {
     zFunction: (u,v)=>(9 + 2*cos(v))*sin(u),
     uRange: [PI, 2*PI],
     vRange: [0, 2*PI],
-    stroke: color(0, 255, 0),
+    stroke: [0, 0, 255],
     sampleCount: 40
 };
 
