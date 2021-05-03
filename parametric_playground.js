@@ -77,6 +77,39 @@ function selectExampleOnChange() {
     exampleCodeMirrorEditor.setValue(examples[selectExample.selectedIndex].code);
 }
 
+
+function downloadUserCode() {
+  // from stackoverflow:
+  //   https://stackoverflow.com/questions/51315044/how-do-i-save-the-content-of-the-editor-not-the-whole-html-page/51315312
+
+  var textToWrite = userCodeMirrorEditor.getValue();
+  var textFileAsBlob = new Blob([textToWrite], {
+    type: "text/plain;charset=utf-8"
+  });
+  var fileNameToSaveAs = "my_code.js";
+
+  var downloadLink = document.createElement("a");
+  downloadLink.download = fileNameToSaveAs;
+  downloadLink.innerHTML = "Download File";
+  if (window.webkitURL != null) {
+    // Chrome allows the link to be clicked
+    // without actually adding it to the DOM.
+    downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+  } else {
+    // Firefox requires the link to be added to the DOM
+    // before it can be clicked.
+    downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+    downloadLink.onclick = destroyClickedElement;
+    downloadLink.style.display = "none";
+    document.body.appendChild(downloadLink);
+  }
+
+  downloadLink.click();
+}
+
+
+
+
 // p5 sketch
 
 function setup() 

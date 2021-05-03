@@ -23,6 +23,7 @@
 <!--
 <button onclick="restoreUserCode()">Restore</button>
 -->
+<button onclick="downloadUserCode()">Save code as file</button>
 
 <center>
 <main></main>
