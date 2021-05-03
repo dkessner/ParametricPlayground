@@ -20,6 +20,9 @@
 <textarea id="userCode"></textarea>
 
 <button onclick="runUserCode()">Run code!</button>
+<!--
+<button onclick="restoreUserCode()">Restore</button>
+-->
 
 <center>
 <main></main>

@@ -16,8 +16,17 @@ let exampleCodeMirrorEditor;
 
 
 function runUserCode() {
-    let f = new Function(userCodeMirrorEditor.getValue());
-    f();
+    let code = userCodeMirrorEditor.getValue();
+    if (code) {
+        localStorage.setItem('code', code);
+        let f = new Function(code);
+        f();
+    }
+}
+
+function restoreUserCode() {
+    let code = localStorage.getItem('code');
+    if (code) userCodeMirrorEditor.setValue(code);
 }
 
 function runExampleCode() {
@@ -33,7 +42,12 @@ function initializeCodeMirror() {
     });
 
     userCodeMirrorEditor.setSize("100%", 800);
-    userCodeMirrorEditor.setValue(examples[0].code);
+
+    let code = localStorage.getItem('code');
+    if (code) {
+        userCodeMirrorEditor.setValue(code);
+        initializeSurfaces = new Function(code);
+    }
 
     let exampleCode = document.getElementById("exampleCode");
     exampleCodeMirrorEditor = CodeMirror.fromTextArea(exampleCode, {
