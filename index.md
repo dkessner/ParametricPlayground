@@ -4,8 +4,8 @@
 <script src="p5/p5.min.js"></script>
 <script src="p5/p5.easycam.min.js"></script>
 
-<script src="parametric_playground.js"></script>
-<script src="examples.js"></script>
+<script src="js/parametric_playground.js"></script>
+<script src="js/examples.js"></script>
 
 <!-- codemirror -->
 <link rel="stylesheet" href="codemirror/lib/codemirror.css">
