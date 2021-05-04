@@ -42,29 +42,6 @@ let surfaceEllipticParaboloid = new ZSurface(ellipticParaboloid);
 let surfacePlane = new ZSurface(z => 4);
 
 
-class Torus {
-    constructor(centerX, centerY, centerZ, a, b) {
-        this.xFunction = function(u,v) {return centerX + (a + b*cos(v))*cos(u);}
-        this.yFunction = function(u,v) {return centerY + (a + b*cos(v))*sin(u);}
-        this.zFunction = function(u,v) {return centerZ + b*sin(v);}
-        this.uRange = circleRange;
-        this.vRange = circleRange;
-    }
-}
-
-let surfaceTorus = new Torus(0, 0, 0, 5, 1);
-
-/*
-    let torus = new Torus(3, 3, 0, 2, 1);
-    torus.stroke = color(0, 255, 0);
-    surfaces.push(torus);
-
-    torus = new Torus(-3, -3, 0, 2, 1);
-    torus.stroke = color(0, 0, 255);
-    surfaces.push(torus);
-*/
-
-
 const exampleHello = `// hello
 
 // clear the list of surfaces
@@ -198,10 +175,34 @@ let mouth = {
 surfaces.push(mouth);
 `;
 
+
+const exampleClass = `
+class Torus {
+    constructor(centerX, centerY, centerZ, a, b) {
+        this.xFunction = function(u,v) {return centerX + (a + b*cos(v))*cos(u);}
+        this.yFunction = function(u,v) {return centerY + (a + b*cos(v))*sin(u);}
+        this.zFunction = function(u,v) {return centerZ + b*sin(v);}
+        this.uRange = [0,2*PI];
+        this.vRange = [0,2*PI];
+    }
+}
+
+surfaces = [];
+
+for (let x=-10; x<=10; x+=2)
+{
+    let torus = new Torus(x, x, x, 2, 1);
+    torus.stroke = [0, 255 - 255*(x+10)/20, 255*(x+10)/20];
+    surfaces.push(torus);
+}
+`
+
+
 const examples = [
     {name: "hello", code: exampleHello},
     {name: "simple face", code: exampleSimpleFace},
-    {name: "sphere face", code: exampleSphereFace}
+    {name: "sphere face", code: exampleSphereFace},
+    {name: "class", code: exampleClass}
 ];
 
 
