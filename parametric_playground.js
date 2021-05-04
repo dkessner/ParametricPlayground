@@ -138,7 +138,7 @@ function draw(){
     drawAxes();
 
     for (surface of surfaces)
-        drawSurface(surface);
+        drawSurfaceFilled(surface);
 }
 
 
@@ -243,25 +243,43 @@ function drawSurface(surface)
     }
 }
 
-
-function keyPressed()
+function drawSurfaceFilled(surface)
 {
-    if (key == 'h')
-    {
-        surfaces.push(surfaceHyperbolicParaboloid);
-    }
-    else if (key == 'e')
-    {
-        surfaces.push(surfaceEllipticParaboloid);
-    }
-    else if (key == 'p')
-    {
-        surfaces.push(surfacePlane);
-    }
-    else if (key == 't')
-    {
-        surfaces.push(surfaceTorus);
-    }
+    stroke(255);
+    fill(0, 0, 255);
+    stroke('stroke' in surface ? surface.stroke: 255);
+    strokeWeight(1);
+
+    if ('fill' in surface)
+        fill(surface.fill);
+    else
+        noFill();
+
+    let sampleCount = 'sampleCount' in surface ? surface.sampleCount : 10;
+
+    const x = surface.xFunction;
+    const y = surface.yFunction;
+    const z = surface.zFunction;
+
+    push();
+    scale(gridSize);
+    beginShape(TRIANGLES);
+    for (let i=0; i<sampleCount; i++) {
+    for (let j=0; j<sampleCount; j++) {
+        let u = indexIntoRange(i, sampleCount, surface.uRange);
+        let v = indexIntoRange(j, sampleCount, surface.vRange);
+        let uEnd = indexIntoRange(i+1, sampleCount, surface.uRange);
+        let vEnd = indexIntoRange(j+1, sampleCount, surface.vRange);
+        vertex(x(u,v), y(u,v), z(u,v));
+        vertex(x(u,vEnd), y(u,vEnd), z(u,vEnd));
+        vertex(x(uEnd,v), y(uEnd,v), z(uEnd,v));
+
+        vertex(x(u,vEnd), y(u,vEnd), z(u,vEnd));
+        vertex(x(uEnd,v), y(uEnd,v), z(uEnd,v));
+        vertex(x(uEnd,vEnd), y(uEnd,vEnd), z(uEnd,vEnd));
+    }}
+    endShape();
+    pop();
 }
 
 

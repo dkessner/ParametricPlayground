@@ -150,7 +150,8 @@ let mouth = {
     zFunction: (x,y)=>0,
     uRange: [3, 7],
     vRange: [-5, 5],
-    stroke: [0, 0, 255]
+    stroke: [0, 0, 255],
+    fill: 200
 };
 
 surfaces.push(mouth);
@@ -178,7 +179,7 @@ let rightEye = {
     zFunction: (u,v)=>5 + 3*cos(u),
     uRange: [0, 2*PI],
     vRange: [0, 2*PI],
-    stroke: [0, 255, 0]
+    stroke: [0, 255, 0], 
 };
 
 surfaces.push(rightEye);
@@ -190,7 +191,8 @@ let mouth = {
     uRange: [PI, 2*PI],
     vRange: [0, 2*PI],
     stroke: [0, 0, 255],
-    sampleCount: 40
+    sampleCount: 20,
+    fill: [255, 0, 255]
 };
 
 surfaces.push(mouth);
