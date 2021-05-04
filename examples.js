@@ -117,7 +117,7 @@ let leftEye = {
     xFunction: (u,v)=>3*sin(u)*cos(v),
     yFunction: (u,v)=>-5 + 3*sin(u)*sin(v),
     zFunction: (u,v)=>5 + 3*cos(u),
-    uRange: [0, 2*PI],
+    uRange: [0, PI],
     vRange: [0, 2*PI],
     stroke: [255, 0, 0]
 };
@@ -128,7 +128,7 @@ let rightEye = {
     xFunction: (u,v)=>3*sin(u)*cos(v),
     yFunction: (u,v)=>5 + 3*sin(u)*sin(v),
     zFunction: (u,v)=>5 + 3*cos(u),
-    uRange: [0, 2*PI],
+    uRange: [0, PI],
     vRange: [0, 2*PI],
     stroke: [0, 255, 0], 
 };
