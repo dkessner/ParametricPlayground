@@ -179,9 +179,9 @@ surfaces.push(mouth);
 const exampleClass = `
 class Torus {
     constructor(centerX, centerY, centerZ, a, b) {
-        this.xFunction = function(u,v) {return centerX + (a + b*cos(v))*cos(u);}
-        this.yFunction = function(u,v) {return centerY + (a + b*cos(v))*sin(u);}
-        this.zFunction = function(u,v) {return centerZ + b*sin(v);}
+        this.xFunction = (u,v) => centerX + (a + b*cos(v))*cos(u);
+        this.yFunction = (u,v) => centerY + (a + b*cos(v))*sin(u);
+        this.zFunction = (u,v) => centerZ + b*sin(v);
         this.uRange = [0,2*PI];
         this.vRange = [0,2*PI];
     }
