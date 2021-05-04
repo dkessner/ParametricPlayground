@@ -2,45 +2,6 @@
 // examples.js
 //
 
-function hyperbolicParaboloid(x,y) {return (x*x - y*y);}
-
-function ellipticParaboloid(x,y) {return (x*x + y*y);}
-
-function projectU(u, v) {return u;}
-function projectV(u, v) {return v;}
-
-let gridRange = [-gridCount, gridCount];
-let circleRange = [0, 2*PI];
-
-
-class ZSurface {
-    constructor(zFunction, xMin, xMax, yMin, yMax) {
-        console.log(arguments);
-
-        this.xFunction = projectU;
-        this.yFunction = projectV;
-        this.zFunction = zFunction;
-
-        if (xMin in arguments) {
-            this.uRange = [xMin, xMax];
-        }
-        else {
-            this.uRange = gridRange;
-        }
-
-        if (yMin in arguments) {
-            this.vRange = [yMin, yMax];
-        }
-        else {
-            this.vRange = gridRange;
-        }
-    }
-}
-
-let surfaceHyperbolicParaboloid = new ZSurface(hyperbolicParaboloid);
-let surfaceEllipticParaboloid = new ZSurface(ellipticParaboloid);
-let surfacePlane = new ZSurface(z => 4);
-
 
 const exampleHello = `// hello
 
@@ -81,7 +42,7 @@ surfaces.push(xyPlane);
 let square = {
     xFunction: (x,y)=>x,
     yFunction: (x,y)=>y,
-    zFunction: (x,y)=>3,
+    zFunction: (x,y) => -3,
     uRange: [-1, 1],
     vRange: [-1, 1],
     stroke: [0, 255, 0],
@@ -89,6 +50,19 @@ let square = {
 };
 
 surfaces.push(square);
+
+let paraboloid = {
+    xFunction: (x,y)=>x,
+    yFunction: (x,y)=>y,
+    zFunction: (x,y) => x*x + y*y,
+    uRange: [-3, 3],
+    vRange: [-3, 3],
+    stroke: [0, 0, 255],
+    sampleCount: 10
+};
+
+surfaces.push(paraboloid);
+
 `;
 
 
