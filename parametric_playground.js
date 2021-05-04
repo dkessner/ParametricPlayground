@@ -48,6 +48,10 @@ function initializeCodeMirror() {
         userCodeMirrorEditor.setValue(code);
         initializeSurfaces = new Function(code);
     }
+    else {
+        userCodeMirrorEditor.setValue(examples[0].code);
+        initializeSurfaces = new Function(code);
+    }
 
     let exampleCode = document.getElementById("exampleCode");
     exampleCodeMirrorEditor = CodeMirror.fromTextArea(exampleCode, {
