@@ -137,6 +137,9 @@ function draw(){
     initialTransformation();
     drawAxes();
 
+    ambientLight(200);
+    pointLight(50, 50, 50, 0, 0, -200);
+
     for (surface of surfaces)
         drawSurfaceFilled(surface);
 }
@@ -245,15 +248,22 @@ function drawSurface(surface)
 
 function drawSurfaceFilled(surface)
 {
-    stroke(255);
-    fill(0, 0, 255);
-    stroke('stroke' in surface ? surface.stroke: 255);
-    strokeWeight(1);
+    if ('stroke' in surface) {
+        stroke(surface.stroke)
+        strokeWeight(1);
+    }
+    else {
+        noStroke();
+    }
 
     if ('fill' in surface)
+    {
         fill(surface.fill);
-    else
+        specularMaterial(surface.fill);
+    }
+    else {
         noFill();
+    }
 
     let sampleCount = 'sampleCount' in surface ? surface.sampleCount : 10;
 

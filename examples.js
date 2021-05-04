@@ -158,6 +158,7 @@ class Torus {
         this.zFunction = (u,v) => centerZ + b*sin(v);
         this.uRange = [0,2*PI];
         this.vRange = [0,2*PI];
+        this.sampleCount = 15;
     }
 }
 
@@ -166,7 +167,7 @@ surfaces = [];
 for (let x=-10; x<=10; x+=2)
 {
     let torus = new Torus(x, x, x, 2, 1);
-    torus.stroke = [0, 255 - 255*(x+10)/20, 255*(x+10)/20];
+    torus.fill = [0, 255 - 255*(x+10)/20, 255*(x+10)/20];
     surfaces.push(torus);
 }
 `
