@@ -5,10 +5,6 @@
 
 const exampleHello = `// hello
 
-// clear the list of surfaces
-
-surfaces = [];
-
 // Define each surface by its parametric equations
 //   x(u,v), y(u,v), z(u,v). 
 // and the limits for u and v.
@@ -71,8 +67,6 @@ initializeSurfaces = new Function(exampleHello);
 
 const exampleSimpleFace = `// simple face
 
-surfaces = [];
-
 let leftEye = {
     xFunction: (x,y)=>x,
     yFunction: (x,y)=>y,
@@ -110,8 +104,6 @@ surfaces.push(mouth);
 
 
 const exampleSphereFace = `// sphere face
-
-surfaces = [];
 
 let leftEye = {
     xFunction: (u,v)=>3*sin(u)*cos(v),
@@ -164,8 +156,6 @@ class Torus {
     }
 }
 
-surfaces = [];
-
 for (let x=-10; x<=10; x+=2)
 {
     let torus = new Torus(x, x, x, 2, 1);
@@ -175,8 +165,6 @@ for (let x=-10; x<=10; x+=2)
 `
 
 const exampleHelloClass = `// hello class
-
-surfaces = [];
 
 class ZSurface {
     constructor(f, uMin, uMax, vMin, vMax) {

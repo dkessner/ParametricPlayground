@@ -16,6 +16,9 @@
 
 <!-- content -->
 
+Welcome to the Parametric Playground, where you can draw surfaces using
+parametric equations!
+
 
 <textarea id="userCode"></textarea>
 
