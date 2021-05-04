@@ -19,6 +19,23 @@
 Welcome to the Parametric Playground, where you can draw surfaces using
 parametric equations!
 
+First look at the code and run the 'hello' example.  Make changes to the code
+and see what happens.
+
+Then look at the other examples below for more ideas.  
+
+Have fun!
+
+<br/>
+* rotate: left-click drag
+* pan: middle-click / 2-finger drag
+* zoom: right-click / spread drag
+* reset: double-click
+
+<br/>
+
+<hr/>
+<br/>
 
 <textarea id="userCode"></textarea>
 
@@ -38,13 +55,6 @@ Examples: <select id="selectExample"></select>
 <textarea id="exampleCode"></textarea>
 
 <br/>
-
-### EasyCam controls
-
-* rotate: left-click drag
-* pan: middle-click / 2-finger drag
-* zoom: right-click / spread drag
-* reset: double-click
 
 
 <script>
