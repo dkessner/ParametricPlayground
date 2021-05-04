@@ -16,7 +16,8 @@ surfaces = [];
 // If your surface is of the form z=f(x,y), you can let x=u and y=v.
 
 // Optional: 
-//  'stroke' is a greyscale value or color triple [R, G, B] (all values 0-255).  
+//  'stroke' is the outline color, greyscale value or color triple [R, G, B] (0-255).  
+//  'fill' is the fill color, greyscale value or color triple [R, G, B] (0-255).  
 //  'sampleCount' is the number of subdivisions along each segment
 //
 // You can call your surface (almost) anything you like.  This one is called
@@ -45,8 +46,7 @@ let square = {
     zFunction: (x,y) => -3,
     uRange: [-1, 1],
     vRange: [-1, 1],
-    stroke: [0, 255, 0],
-    sampleCount: 10
+    fill: [0, 255, 0]
 };
 
 surfaces.push(square);
@@ -58,7 +58,7 @@ let paraboloid = {
     uRange: [-3, 3],
     vRange: [-3, 3],
     stroke: [0, 0, 255],
-    sampleCount: 10
+    sampleCount: 20
 };
 
 surfaces.push(paraboloid);
@@ -131,6 +131,8 @@ let rightEye = {
     uRange: [0, PI],
     vRange: [0, 2*PI],
     stroke: [0, 255, 0], 
+    fill: 200,
+    sampleCount: 20
 };
 
 surfaces.push(rightEye);
