@@ -152,7 +152,7 @@ surfaces.push(mouth);
 `;
 
 
-const exampleClass = `
+const exampleClassLoop = `
 class Torus {
     constructor(centerX, centerY, centerZ, a, b) {
         this.xFunction = (u,v) => centerX + (a + b*cos(v))*cos(u);
@@ -174,12 +174,45 @@ for (let x=-10; x<=10; x+=2)
 }
 `
 
+const exampleHelloClass = `// hello class
+
+surfaces = [];
+
+class ZSurface {
+    constructor(f, uMin, uMax, vMin, vMax) {
+        this.xFunction = (x,y)=>x;
+        this.yFunction = (x,y)=>y;
+        this.zFunction = f;
+        this.uRange = [uMin, uMax];
+        this.vRange = [vMin, vMax];
+    }
+}
+
+let xyPlane = new ZSurface(()=>0, -10, 10, -10, 10);
+xyPlane.stroke = 128;
+xyPlane.sampleCount = 20;
+
+surfaces.push(xyPlane);
+
+let square = new ZSurface(()=>-3, -1, 1, -1, 1);
+square.fill = [0, 255, 0];
+
+surfaces.push(square);
+
+let paraboloid = new ZSurface((x,y)=>x*x + y*y, -3, 3, -3, 3);
+paraboloid.stroke = [0, 0, 255];
+paraboloid.sampleCount = 20;
+
+surfaces.push(paraboloid);
+`;
+
 
 const examples = [
     {name: "hello", code: exampleHello},
     {name: "simple face", code: exampleSimpleFace},
     {name: "sphere face", code: exampleSphereFace},
-    {name: "class", code: exampleClass}
+    {name: "hello class", code: exampleHelloClass},
+    {name: "class & loop", code: exampleClassLoop}
 ];
 
 
