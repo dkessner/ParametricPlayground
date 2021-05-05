@@ -49,11 +49,11 @@ Dr. Kessner
 
 <textarea id="userCode"></textarea>
 
-<button onclick="runUserCode()">Run code!</button>
+<button class="btn" onclick="runUserCode()">Run code!</button>
 <!--
 <button onclick="restoreUserCode()">Restore</button>
 -->
-<button onclick="downloadUserCode()">Save code as file</button>
+<button class="btn" onclick="downloadUserCode()">Save code as file</button>
 
 <br/> 
 <center>
@@ -64,7 +64,7 @@ Dr. Kessner
 <h2> Example code: </h2>
 
 Examples: <select id="selectExample"></select>
-<button onclick="runExampleCode()">Run example</button>
+<button class="btn" onclick="runExampleCode()">Run example</button>
 
 <textarea id="exampleCode"></textarea>
 
