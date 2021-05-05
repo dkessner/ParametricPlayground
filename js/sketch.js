@@ -9,13 +9,13 @@ let gridSize;
 
 let surfaces = [];
 
-let fur1;
-let fur2;
-
+let textures = {};
 
 function preload() {
-    fur1 = loadImage('assets/img/fur1.png');
-    fur2 = loadImage('assets/img/fur2.jpg');
+    textures.fur1 = loadImage('assets/img/fur1.png');
+    textures.fur2 = loadImage('assets/img/fur2.jpg');
+    textures.wood = loadImage('assets/img/wood.jpg');
+    textures.bark = loadImage('assets/img/bark.jpg');
 }
 
 function setup() 
@@ -154,6 +154,8 @@ function drawSurface(surface)
 
 function drawSurfaceFilled(surface)
 {
+    push();
+
     if ('stroke' in surface) {
         stroke(surface.stroke)
         strokeWeight(1);
@@ -177,16 +179,15 @@ function drawSurfaceFilled(surface)
     const y = surface.yFunction;
     const z = surface.zFunction;
 
-    let texU = u=>u;
-    let texV = v=>v;
+    let texU;
+    let texV;
 
-    push();
-
-    if ('texture' in surface) {
+    if ('texture' in surface && surface.texture in textures) {
+        let tex = textures[surface.texture];
         // functions to convert from our parameters (u,v) to texture coordinates (u,v)
-        texU = u => map(u, surface.uRange[0], surface.uRange[1], 0, surface.texture.width);
-        texV = v => map(v, surface.vRange[0], surface.vRange[1], 0, surface.texture.height);
-        texture(surface.texture);
+        texU = u => map(u, surface.uRange[0], surface.uRange[1], 0, tex.width);
+        texV = v => map(v, surface.vRange[0], surface.vRange[1], 0, tex.height);
+        texture(tex);
     }
 
     scale(gridSize);
@@ -199,13 +200,27 @@ function drawSurfaceFilled(surface)
         let uEnd = indexIntoRange(i+1, sampleCount, surface.uRange);
         let vEnd = indexIntoRange(j+1, sampleCount, surface.vRange);
 
-        vertex(x(u,v), y(u,v), z(u,v), texU(u), texV(v));
-        vertex(x(u,vEnd), y(u,vEnd), z(u,vEnd), texU(u), texV(vEnd));
-        vertex(x(uEnd,v), y(uEnd,v), z(uEnd,v), texU(uEnd), texV(v));
+        if (texU && texV) {
+            vertex(x(u,v), y(u,v), z(u,v), texU(u), texV(v));
+            vertex(x(u,vEnd), y(u,vEnd), z(u,vEnd), texU(u), texV(vEnd));
+            vertex(x(uEnd,v), y(uEnd,v), z(uEnd,v), texU(uEnd), texV(v));
 
-        vertex(x(u,vEnd), y(u,vEnd), z(u,vEnd), texU(u), texV(vEnd));
-        vertex(x(uEnd,v), y(uEnd,v), z(uEnd,v), texU(uEnd), texV(v));
-        vertex(x(uEnd,vEnd), y(uEnd,vEnd), z(uEnd,vEnd), texU(uEnd), texV(vEnd));
+            vertex(x(u,vEnd), y(u,vEnd), z(u,vEnd), texU(u), texV(vEnd));
+            vertex(x(uEnd,v), y(uEnd,v), z(uEnd,v), texU(uEnd), texV(v));
+            vertex(x(uEnd,vEnd), y(uEnd,vEnd), z(uEnd,vEnd), texU(uEnd), texV(vEnd));
+        }
+        else {
+            // this is to avoid p5 warning about calling vertex() with (u,v) coords
+            // but no texture defined; the warning slows down the draw loop
+
+            vertex(x(u,v), y(u,v), z(u,v));
+            vertex(x(u,vEnd), y(u,vEnd), z(u,vEnd));
+            vertex(x(uEnd,v), y(uEnd,v), z(uEnd,v));
+
+            vertex(x(u,vEnd), y(u,vEnd), z(u,vEnd));
+            vertex(x(uEnd,v), y(uEnd,v), z(uEnd,v));
+            vertex(x(uEnd,vEnd), y(uEnd,vEnd), z(uEnd,vEnd));
+        }
     }}
     endShape();
     pop();
