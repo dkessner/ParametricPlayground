@@ -106,13 +106,13 @@ surfaces.push(mouth);
 const exampleSphereFace = `// sphere face
 
 let leftEye = {
-    xFunction: (u,v)=>3*sin(u)*cos(v),
-    yFunction: (u,v)=>-5 + 3*sin(u)*sin(v),
-    zFunction: (u,v)=>5 + 3*cos(u),
-    uRange: [0, PI],
-    vRange: [0, 2*PI],
+    xFunction: (u,v)=>3*sin(v)*cos(u),
+    yFunction: (u,v)=>-5 + 3*sin(v)*sin(u),
+    zFunction: (u,v)=>5 - 3*cos(v),
+    uRange: [0, 2*PI],
+    vRange: [0, PI],
     stroke: [255, 0, 0],
-    //texture: "fur1"
+    //texture: "earth"
 };
 
 surfaces.push(leftEye);
