@@ -203,6 +203,16 @@ surfaces.push(paraboloid);
 
 let exampleTextures = ` // textures
 
+//
+// This example is to demonstrate the textures that are available.
+//
+// Using a texture is much simpler -- see the "sphere face" example:
+//   texture: 'fur1'; 
+//
+// Or in a constructor:
+//   this.texture = 'fur1';
+//
+
 const textureKeys = Object.keys(textures);
 const textureCount = textureKeys.length;
 
