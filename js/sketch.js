@@ -3,6 +3,8 @@
 //
 
 
+let showAxes = true;
+
 const gridCount = 10;
 let rangeMax;
 let gridSize;
@@ -42,7 +44,8 @@ function draw(){
     background(0);
    
     initialTransformation();
-    drawAxes();
+
+    if (showAxes) drawAxes();
 
     ambientLight(200);
     pointLight(50, 50, 50, 0, 0, -200);
@@ -51,6 +54,10 @@ function draw(){
         drawSurfaceFilled(surface);
 }
 
+function keyPressed() {
+    if (key == 'a')
+        showAxes = !showAxes;
+}
 
 function initialTransformation()
 {
@@ -58,7 +65,6 @@ function initialTransformation()
     rotateZ(PI/2);
     scale(1, -1, 1);
 }
-
 
 function drawAxes()
 {
