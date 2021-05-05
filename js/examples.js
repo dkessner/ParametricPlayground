@@ -112,7 +112,7 @@ let leftEye = {
     uRange: [0, PI],
     vRange: [0, 2*PI],
     stroke: [255, 0, 0],
-    //texture: fur1
+    //texture: "fur1"
 };
 
 surfaces.push(leftEye);
@@ -126,7 +126,7 @@ let rightEye = {
     stroke: [0, 255, 0], 
     fill: 200,
     sampleCount: 20,
-    //texture: fur1,
+    //texture: "marble",
 };
 
 surfaces.push(rightEye);
@@ -140,14 +140,15 @@ let mouth = {
     stroke: [0, 0, 255],
     sampleCount: 20,
     fill: [255, 0, 255],
-    //texture: fur2,
+    //texture: "fur2",
 };
 
 surfaces.push(mouth);
 `;
 
 
-const exampleClassLoop = `
+const exampleClassLoop = `// class & loop
+
 class Torus {
     constructor(centerX, centerY, centerZ, a, b) {
         this.xFunction = (u,v) => centerX + (a + b*cos(v))*cos(u);
@@ -158,6 +159,8 @@ class Torus {
         this.sampleCount = 15;
     }
 }
+
+let i = 0;
 
 for (let x=-10; x<=10; x+=2)
 {
@@ -198,12 +201,59 @@ surfaces.push(paraboloid);
 `;
 
 
+let exampleTextures = ` // textures
+
+const textureKeys = Object.keys(textures);
+const textureCount = textureKeys.length;
+
+const size = 5;
+
+class Patch {
+    constructor(i, j) {
+        this.xFunction = (x,y)=>0;
+        this.yFunction = (x,y)=>y-10;
+        this.zFunction = (x,y)=>x-10;
+        this.uRange = [i*size, (i+1)*size];
+        this.vRange = [j*size, (j+1)*size];
+        this.texture = textureKeys[(i+j)%textureCount];
+    }
+}
+
+for (let i=0; i<4; i++)
+for (let j=0; j<4; j++) {{
+    surfaces.push(new Patch(i,j));
+}}
+
+`;
+
+
+let exampleTexturesFixed = false;
+
+
+function addValidTexturesListToExample() {
+
+    // add the list of valid texture names to exampleTextures
+
+    exampleTextures += "// valid textures:\n";
+    for (textureName in textures) {
+        exampleTextures += "//   '" + textureName + "'\n";
+    }
+
+    // change the reference to exampleTextures in the examples list
+
+    for (example of examples)
+        if (example.name === "textures")
+            example.code = exampleTextures;
+}
+
+
 const examples = [
     {name: "hello", code: exampleHello},
     {name: "simple face", code: exampleSimpleFace},
     {name: "sphere face", code: exampleSphereFace},
     {name: "hello class", code: exampleHelloClass},
-    {name: "class & loop", code: exampleClassLoop}
+    {name: "class & loop", code: exampleClassLoop},
+    {name: "textures", code: exampleTextures}
 ];
 
 

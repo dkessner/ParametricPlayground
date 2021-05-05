@@ -19,6 +19,8 @@ function preload() {
     textures.wood = loadImage('assets/img/wood.jpg');
     textures.bark = loadImage('assets/img/bark.jpg');
     textures.marble = loadImage('assets/img/marble.jpg');
+
+    addValidTexturesListToExample();
 }
 
 function setup() 
