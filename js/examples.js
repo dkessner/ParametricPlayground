@@ -111,7 +111,8 @@ let leftEye = {
     zFunction: (u,v)=>5 + 3*cos(u),
     uRange: [0, PI],
     vRange: [0, 2*PI],
-    stroke: [255, 0, 0]
+    stroke: [255, 0, 0],
+    //texture: fur1
 };
 
 surfaces.push(leftEye);
@@ -124,7 +125,8 @@ let rightEye = {
     vRange: [0, 2*PI],
     stroke: [0, 255, 0], 
     fill: 200,
-    sampleCount: 20
+    sampleCount: 20,
+    //texture: fur1,
 };
 
 surfaces.push(rightEye);
@@ -137,7 +139,8 @@ let mouth = {
     vRange: [0, 2*PI],
     stroke: [0, 0, 255],
     sampleCount: 20,
-    fill: [255, 0, 255]
+    fill: [255, 0, 255],
+    //texture: fur2,
 };
 
 surfaces.push(mouth);

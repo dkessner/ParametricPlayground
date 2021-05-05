@@ -2,6 +2,22 @@
 // sketch.js
 //
 
+
+const gridCount = 10;
+let rangeMax;
+let gridSize;
+
+let surfaces = [];
+
+let fur1;
+let fur2;
+
+
+function preload() {
+    fur1 = loadImage('assets/img/fur1.png');
+    fur2 = loadImage('assets/img/fur2.jpg');
+}
+
 function setup() 
 { 
     createCanvas(800, 800, WEBGL);
@@ -161,8 +177,20 @@ function drawSurfaceFilled(surface)
     const y = surface.yFunction;
     const z = surface.zFunction;
 
+    let texU = u=>u;
+    let texV = v=>v;
+
     push();
+
+    if ('texture' in surface) {
+        // functions to convert from our parameters (u,v) to texture coordinates (u,v)
+        texU = u => map(u, surface.uRange[0], surface.uRange[1], 0, surface.texture.width);
+        texV = v => map(v, surface.vRange[0], surface.vRange[1], 0, surface.texture.height);
+        texture(surface.texture);
+    }
+
     scale(gridSize);
+
     beginShape(TRIANGLES);
     for (let i=0; i<sampleCount; i++) {
     for (let j=0; j<sampleCount; j++) {
@@ -170,13 +198,14 @@ function drawSurfaceFilled(surface)
         let v = indexIntoRange(j, sampleCount, surface.vRange);
         let uEnd = indexIntoRange(i+1, sampleCount, surface.uRange);
         let vEnd = indexIntoRange(j+1, sampleCount, surface.vRange);
-        vertex(x(u,v), y(u,v), z(u,v));
-        vertex(x(u,vEnd), y(u,vEnd), z(u,vEnd));
-        vertex(x(uEnd,v), y(uEnd,v), z(uEnd,v));
 
-        vertex(x(u,vEnd), y(u,vEnd), z(u,vEnd));
-        vertex(x(uEnd,v), y(uEnd,v), z(uEnd,v));
-        vertex(x(uEnd,vEnd), y(uEnd,vEnd), z(uEnd,vEnd));
+        vertex(x(u,v), y(u,v), z(u,v), texU(u), texV(v));
+        vertex(x(u,vEnd), y(u,vEnd), z(u,vEnd), texU(u), texV(vEnd));
+        vertex(x(uEnd,v), y(uEnd,v), z(uEnd,v), texU(uEnd), texV(v));
+
+        vertex(x(u,vEnd), y(u,vEnd), z(u,vEnd), texU(u), texV(vEnd));
+        vertex(x(uEnd,v), y(uEnd,v), z(uEnd,v), texU(uEnd), texV(v));
+        vertex(x(uEnd,vEnd), y(uEnd,vEnd), z(uEnd,vEnd), texU(uEnd), texV(vEnd));
     }}
     endShape();
     pop();

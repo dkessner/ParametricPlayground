@@ -5,12 +5,6 @@
 
 new p5(); // on demand global mode
 
-let gridCount = 10;
-let rangeMax;
-let gridSize;
-
-let surfaces = [];
-
 let userCodeMirrorEditor;
 let exampleCodeMirrorEditor;
 
