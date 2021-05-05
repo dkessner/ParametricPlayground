@@ -228,7 +228,7 @@ class Patch {
         this.zFunction = (u,v)=>v-10;
         this.uRange = [i*size, (i+1)*size];
         this.vRange = [j*size, (j+1)*size];
-        this.texture = textureKeys[(i+j)%textureCount];
+        this.texture = textureKeys[(4*i+j)%textureCount];
     }
 }
 
