@@ -19,6 +19,7 @@ function preload() {
     textures.wood = loadImage('assets/img/wood.jpg');
     textures.bark = loadImage('assets/img/bark.jpg');
     textures.marble = loadImage('assets/img/marble.jpg');
+    textures.ivy_league_juggling = loadImage('assets/img/ivy_league_juggling.jpg');
 
     addValidTexturesListToExample();
 }
@@ -195,7 +196,7 @@ function drawSurfaceFilled(surface)
         let tex = textures[surface.texture];
         // functions to convert from our parameters (u,v) to texture coordinates (u,v)
         texU = u => map(u, surface.uRange[0], surface.uRange[1], 0, tex.width);
-        texV = v => map(v, surface.vRange[0], surface.vRange[1], 0, tex.height);
+        texV = v => map(v, surface.vRange[0], surface.vRange[1], tex.height, 0);
         texture(tex);
     }
 

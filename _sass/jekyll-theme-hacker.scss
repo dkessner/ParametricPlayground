@@ -14,14 +14,17 @@ $container-max-width: 1000px;
   }
 }
 
-body {
-  margin: 0;
-  padding: 0;
+body, select {
   background: $body-background url("../images/bkg.png") 0 0;
   color: $body-foreground;
   font-size: 16px;
   line-height: 1.5;
   font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
+}
+
+body {
+  margin: 0;
+  padding: 0;
 }
 
 /* General & 'Reset' Stuff */

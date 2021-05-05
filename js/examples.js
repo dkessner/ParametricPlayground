@@ -201,15 +201,18 @@ surfaces.push(paraboloid);
 `;
 
 
-let exampleTextures = ` // textures
-
+let exampleTextures = `// textures
 //
-// This example is to demonstrate the textures that are available.
+// This example shows the available textures.  Scroll down to the bottom to see
+// the list of valid texture names.
 //
-// Using a texture is much simpler -- see the "sphere face" example:
+// Using a texture is much simpler than this example (see the "sphere face"
+// example):
+//
 //   texture: 'fur1'; 
 //
 // Or in a constructor:
+//
 //   this.texture = 'fur1';
 //
 
@@ -220,9 +223,9 @@ const size = 5;
 
 class Patch {
     constructor(i, j) {
-        this.xFunction = (x,y)=>0;
-        this.yFunction = (x,y)=>y-10;
-        this.zFunction = (x,y)=>x-10;
+        this.xFunction = (u,v)=>0;
+        this.yFunction = (u,v)=>u-10;
+        this.zFunction = (u,v)=>v-10;
         this.uRange = [i*size, (i+1)*size];
         this.vRange = [j*size, (j+1)*size];
         this.texture = textureKeys[(i+j)%textureCount];
