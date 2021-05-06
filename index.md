@@ -33,13 +33,12 @@ Have fun!
 Dr. Kessner
 
 
-
 <br/>
 * rotate: left-click drag
 * pan: middle-click / 2-finger drag
 * zoom: right-click / spread drag
 * reset: double-click
-
+* hide axes: 'a'
 <br/>
 
 <hr/>
