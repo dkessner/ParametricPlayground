@@ -260,6 +260,25 @@ function addValidTexturesListToExample() {
 }
 
 
+const exampleHelicoid = `\\ helicoid 
+
+let helicoid = {
+    xFunction: (u,v)=>u*cos(v),
+    yFunction: (u,v)=>u*sin(v),
+    zFunction: (u,v)=>v,
+    uRange: [0,10],
+    vRange: [0,2*PI],
+    stroke: 255,
+    fill: [255, 0, 0],
+    sampleCount: 20,
+    texture: "juggling"
+};
+
+surfaces.push(helicoid);
+
+`;
+
+
 const examples = [
     {name: "hello", code: exampleHello},
     {name: "simple face", code: exampleSimpleFace},
@@ -267,6 +286,7 @@ const examples = [
     {name: "hello class", code: exampleHelloClass},
     {name: "class & loop", code: exampleClassLoop},
     {name: "textures", code: exampleTextures}
+    {name: "helicoid", code: exampleHelicoid}
 ];
 
 
