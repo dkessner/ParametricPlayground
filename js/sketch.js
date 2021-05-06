@@ -20,7 +20,7 @@ function preload() {
     textures.bark = loadImage('assets/img/bark.jpg');
     textures.marble = loadImage('assets/img/marble.jpg');
     textures.earth = loadImage('assets/img/earth.jpg');
-    textures.ivy_league_juggling = loadImage('assets/img/ivy_league_juggling.jpg');
+    textures.juggling = loadImage('assets/img/juggling.jpg');
 
     addValidTexturesListToExample();
 }
