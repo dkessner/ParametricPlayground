@@ -260,7 +260,7 @@ function addValidTexturesListToExample() {
 }
 
 
-const exampleHelicoid = `\\ helicoid 
+const exampleHelicoid = `// helicoid 
 
 let helicoid = {
     xFunction: (u,v)=>u*cos(v),
@@ -285,8 +285,8 @@ const examples = [
     {name: "sphere face", code: exampleSphereFace},
     {name: "hello class", code: exampleHelloClass},
     {name: "class & loop", code: exampleClassLoop},
-    {name: "textures", code: exampleTextures}
-    {name: "helicoid", code: exampleHelicoid}
+    {name: "textures", code: exampleTextures},
+    {name: "helicoid", code: exampleHelicoid},
 ];
 
 
