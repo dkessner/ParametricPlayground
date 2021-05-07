@@ -21,6 +21,7 @@ function preload() {
     textures.marble = loadImage('assets/img/marble.jpg');
     textures.earth = loadImage('assets/img/earth.jpg');
     textures.juggling = loadImage('assets/img/juggling.jpg');
+    textures.dirt = loadImage('assets/img/dirt.jpg');
 
     addValidTexturesListToExample();
 }
