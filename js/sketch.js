@@ -22,7 +22,7 @@ function preload() {
     textures.earth = loadImage('assets/img/earth.jpg');
     textures.juggling = loadImage('assets/img/juggling.jpg');
     textures.dirt = loadImage('assets/img/dirt.jpg');
-    textures.snow = loadImage('assets/img/snow.jpg');
+//    textures.snow = loadImage('assets/img/snow.jpg');
 
     addValidTexturesListToExample();
 }
