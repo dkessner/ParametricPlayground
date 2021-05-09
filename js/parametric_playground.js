@@ -60,6 +60,8 @@ function initializeCodeMirror() {
     exampleCodeMirrorEditor.setValue(examples[0].code);
 }
 
+// example dropdown
+
 function initializeExampleList() {
     let selectExample = document.getElementById("selectExample");
     selectExample.addEventListener('change', selectExampleOnChange);
@@ -76,6 +78,27 @@ function selectExampleOnChange() {
     let selectExample = document.getElementById("selectExample");
     exampleCodeMirrorEditor.setValue(examples[selectExample.selectedIndex].code);
 }
+
+// student example dropdown
+
+function initializeStudentExampleList() {
+    let selectExample = document.getElementById("selectStudentExample");
+    selectExample.addEventListener('change', selectStudentExampleOnChange);
+
+    for (example of studentExamples) {
+        let option = document.createElement("option");
+        option.text = example.name;
+        selectStudentExample.add(option);
+    }
+
+}
+
+function selectStudentExampleOnChange() {
+    let selectStudentExample = document.getElementById("selectStudentExample");
+    exampleCodeMirrorEditor.setValue(studentExamples[selectStudentExample.selectedIndex].code);
+}
+
+//
 
 function restoreUserCode() {
     let code = localStorage.getItem('code');

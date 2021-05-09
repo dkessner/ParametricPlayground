@@ -7,6 +7,7 @@
 <script src="js/parametric_playground.js"></script>
 <script src="js/sketch.js"></script>
 <script src="js/examples.js"></script>
+<script src="js/studentExamples.js"></script>
 
 <!-- codemirror -->
 <link rel="stylesheet" href="codemirror/lib/codemirror.css">
@@ -64,7 +65,9 @@ Dr. Kessner
 <h2> Example code: </h2>
 
 Examples: <select id="selectExample"></select>
+Student examples: <select id="selectStudentExample"></select>
 <button class="btn" onclick="runExampleCode()">Run example</button>
+<button class="btn" onclick="clearSurfaces()">Clear</button>
 
 <textarea id="exampleCode"></textarea>
 
@@ -74,6 +77,7 @@ Examples: <select id="selectExample"></select>
 <script>
     initializeCodeMirror();
     initializeExampleList();
+    initializeStudentExampleList();
 </script>
 
 
