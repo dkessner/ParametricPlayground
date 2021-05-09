@@ -49,6 +49,7 @@ Dr. Kessner
 <textarea id="userCode"></textarea>
 
 <button class="btn" onclick="runUserCode()">Run code!</button>
+<button class="btn" onclick="clearSurfaces()">Clear</button>
 <!--
 <button onclick="restoreUserCode()">Restore</button>
 -->

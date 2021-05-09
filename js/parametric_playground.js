@@ -9,6 +9,11 @@ let userCodeMirrorEditor;
 let exampleCodeMirrorEditor;
 
 
+function clearSurfaces() {
+    surfaces = [];
+}
+
+
 function runUserCode() {
     surfaces = [];
     let code = userCodeMirrorEditor.getValue();
