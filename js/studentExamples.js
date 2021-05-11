@@ -234,12 +234,103 @@ for (let j = 0; j<10; j++)
 `; // Catherine
 
 
+const exampleAva = `// Ava '22
+
+let xyPlane = {
+    xFunction: (x,y)=>x,
+    yFunction: (x,y)=>y,
+    zFunction: (x,y)=>0,    // z = 0
+    uRange: [-10, 10],
+    vRange: [-10, 10],
+    stroke: 128,
+    sampleCount: 20
+};
+
+surfaces.push(xyPlane);
+
+let pringle = {
+    xFunction: (x,y)=>x,
+    yFunction: (x,y)=>y,
+    zFunction: (x,y) => x*x - y*y,
+    uRange: [-2, 2],
+    vRange: [-2, 2],
+    fill: [255, 0, 255],
+  sampleCount: 20
+};
+
+surfaces.push(pringle);
+
+let cone = {
+    xFunction: (x,y)=>x,
+    yFunction: (x,y)=>y,
+    zFunction: (x,y) => sqrt (x*x + y*y),
+    uRange: [-3, 3],
+    vRange: [-3, 3],
+    stroke: [255, 0, 255],
+    sampleCount: 20
+};
+
+surfaces.push(cone);
+
+let bigSphere = {
+    xFunction: (u,v)=>3*sin(v)*cos(u),
+    yFunction: (u,v)=> 3*sin(v)*sin(u),
+    zFunction: (u,v)=> 6 - 3*cos(v),
+    uRange: [0, 2*PI],
+    vRange: [0, PI],
+    stroke: [255, 0, 0],
+    texture: "marble"
+};
+
+surfaces.push(bigSphere);
+
+let mediumSphere = {
+    xFunction: (u,v)=>2*sin(v)*cos(u),
+    yFunction: (u,v)=> 2*sin(v)*sin(u),
+    zFunction: (u,v)=>10 - 2*cos(v),
+    uRange: [0, 2*PI],
+    vRange: [0, PI],
+    stroke: [255, 0, 0],
+    texture: "marble"
+};
+
+surfaces.push(mediumSphere);
+
+let smallSphere = {
+    xFunction: (u,v)=> sin(v)*cos(u),
+    yFunction: (u,v)=> sin(v)*sin(u),
+    zFunction: (u,v)=> 12.5 - cos(v),
+    uRange: [0, 2*PI],
+    vRange: [0, PI],
+    stroke: [255, 0, 0],
+    texture: "marble"
+};
+
+surfaces.push(smallSphere);
+
+let helicoid = {
+    xFunction: (u,v)=>u*cos(v),
+    yFunction: (u,v)=>u*sin(v),
+    zFunction: (u,v)=>v,
+    uRange: [0,10],
+    vRange: [0,2*PI],
+    stroke: 255,
+    fill: [255, 0, 0],
+    sampleCount: 20,
+    texture: "marble"
+};
+
+surfaces.push(helicoid);
+`; // Ava
+
+
 const studentExamples = [
     {name: "hello", code: exampleHello},
     {name: "Ellie '21", code: exampleEllie},
     {name: "Anjali '21", code: exampleAnjali},
     {name: "Sidney '21", code: exampleSidney},
     {name: "Catherine '21", code: exampleCatherine},
+    {name: "Ava '22", code: exampleAva},
 ];
 
 
