@@ -2,6 +2,110 @@
 // studentExamples.js
 //
 
+const exampleJulianne22 = `// Julianne '22
+
+let xyPlane = {
+    xFunction: (x,y)=>x,
+    yFunction: (x,y)=>y,
+    zFunction: (x,y)=>0,    // z = 0
+    uRange: [-10, 10],
+    vRange: [-10, 10],
+    stroke: 128,
+    sampleCount: 20
+};
+
+// add your surface to the list of surfaces
+
+//surfaces.push(xyPlane);
+
+// add more!
+
+//rs is radius from sun
+//as is angle from center
+class CelestialObject {
+  constructor(rs, as, radius, r, g, b) {
+    //fix the rs/as stuff it isn't correct
+    this.xFunction = (u,v)=>rs*cos(as)+radius*sin(u)*cos(v);
+    this.yFunction = (u,v)=>rs*sin(as)+radius*sin(u)*sin(v);
+  	this.zFunction = (u,v)=>radius*cos(u);
+  	this.uRange = [0, PI],
+  	this.vRange = [0, 2*PI],
+    this.fill = [r, g, b],
+    this.sampleCount = 15
+  }
+}
+class OrbitPath {
+ constructor(r) {
+   this.xFunction = (u,v) => r*cos(u);
+   this.yFunction = (u, v) => r*sin(u);
+   this.zFunction = (u,v) => 0;
+   this.uRange = [0, 2*PI],
+   this.vRange = [0, PI],
+   this.stroke = 255,
+   this.sampleCount = 30
+ }
+}
+
+//torus asteroid belt
+let asteroidBelt = {
+  xFunction: (u,v)=> (16+.15*cos(u))*cos(v),
+  yFunction: (u,v)=> (16+.15*cos(u))*sin(v),
+  zFunction: (u,v)=> .1*sin(u),
+  uRange: [0, 2*PI],
+  vRange: [0, 2*PI],
+  fill: [110, 110, 110],
+  sampleCount: 50
+}
+surfaces.push(asteroidBelt);
+
+let sun = new CelestialObject(0, 0, 3, 255, 212, 20);
+surfaces.push(sun);
+
+let mercury = new CelestialObject(6, 7*PI/6, .3, 181, 178, 168);
+let mercuryOrbit = new OrbitPath(6);
+surfaces.push(mercury);
+
+let venus = new CelestialObject(9, PI/3, .5, 245, 144, 44);
+let venusOrbit = new OrbitPath(9);
+surfaces.push(venus);
+
+let earth = new CelestialObject(12, 7*PI/4, .5, 6, 86, 161);
+let earthOrbit = new OrbitPath(12);
+surfaces.push(earth);
+
+let mars = new CelestialObject(14, PI, .3, 199, 73, 0);
+let marsOrbit = new OrbitPath(14);
+surfaces.push(mars);
+
+let jupiter = new CelestialObject(20, 7*PI/12, 1.5, 242, 186, 138);
+let jupiterOrbit = new OrbitPath(20);
+surfaces.push(jupiter);
+
+let saturn = new CelestialObject(25, 0, .95, 237, 216, 164);
+let saturnOrbit = new OrbitPath(25);
+surfaces.push(saturn);
+
+let uranus = new CelestialObject(30, 3*PI/2, .8, 171, 212, 217);
+let uranusOrbit = new OrbitPath(30);
+surfaces.push(uranus);
+
+let neptune = new CelestialObject(37, 5*PI/4, .8, 27, 122, 224);
+let neptuneOrbit = new OrbitPath(37);
+surfaces.push(neptune);
+
+surfaces.push(mercuryOrbit);
+surfaces.push(venusOrbit);
+surfaces.push(earthOrbit);
+surfaces.push(marsOrbit);
+surfaces.push(jupiterOrbit);
+surfaces.push(saturnOrbit);
+surfaces.push(uranusOrbit);
+surfaces.push(neptuneOrbit); 
+
+
+`; // Julianne '22
+
+
 const exampleDelia22 = `// Delia '22
 
 let xyPlane = {
@@ -1083,6 +1187,7 @@ surfaces.push(helicoid);
 
 const studentExamples = [
     {name: "---", code: exampleHello},
+    {name: "Julianne '22", code: exampleJulianne22},
     {name: "Ava L '22", code: exampleAva22},
     {name: "Charlotte '22", code: exampleCharlotte22},
     {name: "Delia '22", code: exampleDelia22},
