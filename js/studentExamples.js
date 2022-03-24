@@ -2,6 +2,29 @@
 // studentExamples.js
 //
 
+
+const exampleAshley23 = ` // Ashley '23
+
+//hyperbolic helicoid
+
+let sinh = Math.sinh;
+let cosh = Math.cosh;
+let Hello = {
+xFunction: (u,v)=> 10*(sinh(2*PI*u)*cos(10*PI*v))/(1+cosh(2*PI*u)*cosh(2*PI*v)),
+yFunction: (u,v)=>10*(sinh(2*PI*u)*sin(10*PI*v))/(1+cosh(2*PI*u)*cosh(2*PI*v)),
+zFunction: (u,v)=> 10*(cosh(2*PI*u)*sinh(2*PI*v))/(1+cosh(2*PI*u)*cosh(2*PI*v)),
+uRange: [-5, 5],
+vRange: [-5, 5],
+stroke: [128, 0, 0],
+fill: [245, 149, 66],
+sampleCount: 320
+};
+
+surfaces.push(Hello);
+
+`; // Ashley '23
+
+
 const exampleSadie22 = `// Sadie '22
 
 let xyPlane = {
@@ -1453,6 +1476,7 @@ surfaces.push(helicoid);
 
 const studentExamples = [
     {name: "---", code: exampleHello},
+    {name: "Ashley '23", code: exampleAshley23},
     {name: "Ava L '22", code: exampleAva22},
     {name: "Charlotte '22", code: exampleCharlotte22},
     {name: "Delia '22", code: exampleDelia22},
