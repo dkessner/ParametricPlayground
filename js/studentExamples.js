@@ -2,6 +2,272 @@
 // studentExamples.js
 //
 
+const exampleSadie22 = `// Sadie '22
+
+let xyPlane = {
+    xFunction: (x,y)=>x,
+    yFunction: (x,y)=>y,
+    zFunction: (x,y)=>0,    // z = 0
+    uRange: [-10, 10],
+    vRange: [-10, 10],
+    stroke: 128,
+    sampleCount: 20
+};
+
+// add your surface to the list of surfaces
+
+surfaces.push(xyPlane);
+
+// add more!
+
+let square = {
+    xFunction: (x,y)=>x,
+    yFunction: (x,y)=>y,
+    zFunction: (x,y) => -3,
+    uRange: [-1, 1],
+    vRange: [-1, 1],
+    fill: [0, 255, 0]
+};
+
+surfaces.push(square);
+
+
+let top = {
+    xFunction: (u,v)=> 6*cos(v),
+    yFunction: (u,v)=> 6*sin(v),
+    zFunction: (u,v) => u,
+    uRange: [15, 40],
+    vRange: [0, 2*PI],
+    stroke: [200, 151, 50],
+    fill: [200, 151, 50],
+    sampleCount: 10,
+};
+
+surfaces.push(top);
+
+let sphere = {
+  xFunction: (u,v)=>6*sin(v)*cos(u),
+  yFunction: (u,v)=>6*sin(v)*sin(u),
+  zFunction: (u,v)=>6*cos(v),
+    uRange: [0, 2*PI],
+    vRange: [0, PI],
+    stroke: [200, 151,0],
+    fill: [200, 151,0],
+  sampleCount: 20
+};
+
+surfaces.push(sphere);
+
+`; // Sadie '22
+
+
+const exampleMaisie22 = `// Maisie '22
+
+// sphere face
+
+let ball = {
+    xFunction: (u,v)=>sin(v)*cos(u),
+    yFunction: (u,v)=>sin(v)*sin(u),
+    zFunction: (u,v)=>cos(v),
+    uRange: [0, 2*PI],
+    vRange: [0, PI],
+    stroke: [255, 0, 0],
+    texture: "wood",
+};
+
+surfaces.push(ball);
+
+let ring1 = {
+    xFunction: (u,v)=>(9 + cos(v))*sin(u),
+    yFunction: (u,v)=>(9 + cos(v))*cos(u),
+    zFunction: (u,v)=>sin(v),
+    uRange: [0, 2*PI],
+    vRange: [0, 2*PI],
+    stroke: [0, 0, 255],
+    sampleCount: 20,
+    fill: [255, 0, 255],
+    texture: "wood",
+};
+
+surfaces.push(ring1);
+
+let ring1b = {
+    xFunction: (u,v)=>(6.5 + .5*cos(v))*sin(u),
+    yFunction: (u,v)=>(6.5 + .5*cos(v))*cos(u),
+    zFunction: (u,v)=>.5*sin(v),
+    uRange: [0, 2*PI],
+    vRange: [0, 2*PI],
+    stroke: [0, 0, 255],
+    sampleCount: 20,
+    fill: [255, 0, 255],
+    texture: "marble",
+};
+
+surfaces.push(ring1b);
+
+let ring2 = {
+    xFunction: (u,v)=>(4 + cos(v))*sin(u),
+    yFunction: (u,v)=>(4 + cos(v))*cos(u),
+    zFunction: (u,v)=>sin(v),
+    uRange: [0, 2*PI],
+    vRange: [0, 2*PI],
+    stroke: [0, 0, 255],
+    sampleCount: 20,
+    fill: [255, 0, 255],
+    texture: "wood",
+};
+
+surfaces.push(ring2);
+
+let ring2b = {
+    xFunction: (u,v)=>(2 + .5*cos(v))*sin(u),
+    yFunction: (u,v)=>(2 + .5*cos(v))*cos(u),
+    zFunction: (u,v)=>.5*sin(v),
+    uRange: [0, 2*PI],
+    vRange: [0, 2*PI],
+    stroke: [0, 0, 255],
+    sampleCount: 20,
+    fill: [255, 0, 255],
+    texture: "marble",
+};
+
+surfaces.push(ring2b);
+
+let ring3 = {
+    xFunction: (u,v)=>.5*sin(v),
+    yFunction: (u,v)=>(12 + .25*cos(v))*cos(u),
+    zFunction: (u,v)=>(12 + .25*cos(v))*sin(u),
+    uRange: [0, 2*PI],
+    vRange: [0, 2*PI],
+    stroke: [0, 0, 255],
+    sampleCount: 20,
+    fill: [255, 0, 255],
+    texture: "marble",
+};
+
+surfaces.push(ring3);
+
+let ring4 = {
+    xFunction: (u,v)=>(12 + .25*cos(v))*sin(u),
+    yFunction: (u,v)=>.5*sin(v),
+    zFunction: (u,v)=>(12 + .25*cos(v))*cos(u),
+    uRange: [0, 2*PI],
+    vRange: [0, 2*PI],
+    stroke: [0, 0, 255],
+    sampleCount: 20,
+    fill: [255, 0, 255],
+    texture: "marble",
+};
+
+surfaces.push(ring4);
+
+let ring5 = {
+    xFunction: (u,v)=>(12 + .25*cos(v/2))*sin(u),
+    yFunction: (u,v)=>.5*sin(v/2),
+    zFunction: (u,v)=>(12 + .25*cos(v/2))*cos(u),
+    uRange: [0, 2*PI],
+    vRange: [0, 2*PI],
+    stroke: [0, 0, 255],
+    sampleCount: 20,
+    fill: [255, 0, 255],
+    texture: "wood",
+};
+
+surfaces.push(ring5);
+
+
+let ring6 = {
+    xFunction: (u,v)=>.5*sin(v/2),
+    yFunction: (u,v)=>(12 + .25*cos(v/2))*cos(u),
+    zFunction: (u,v)=>(12 + .25*cos(v/2))*sin(u),
+    uRange: [0, 2*PI],
+    vRange: [0, 2*PI],
+    stroke: [0, 0, 255],
+    sampleCount: 20,
+    fill: [255, 0, 255],
+    texture: "wood",
+};
+
+surfaces.push(ring6);
+
+//weird pattern thing on the rings
+
+let ring7 = {
+    xFunction: (u,v)=>(12 + .25*cos(v))*sin(u-(PI/4)),
+    yFunction: (u,v)=>.5*sin(v),
+    zFunction: (u,v)=>(12 + .25*cos(v))*cos(u-(PI/4)),
+    uRange: [0, 2*PI],
+    vRange: [0, 2*PI],
+    stroke: [0, 0, 255],
+    sampleCount: 20,
+    fill: [255, 0, 255],
+    texture: "wood",
+};
+
+surfaces.push(ring7);
+
+
+let ring8 = {
+    xFunction: (u,v)=>.5*sin(v),
+    yFunction: (u,v)=>(12 + .25*cos(v))*cos(u-(PI/4)),
+    zFunction: (u,v)=>(12 + .25*cos(v))*sin(u-(PI/4)),
+    uRange: [0, 2*PI],
+    vRange: [0, 2*PI],
+    stroke: [0, 0, 255],
+    sampleCount: 20,
+    fill: [255, 0, 255],
+    texture: "wood",
+};
+
+surfaces.push(ring8);
+
+let ring9 = {
+    xFunction: (u,v)=>(12 + .25*cos(v/2))*sin(u-(PI/4)),
+    yFunction: (u,v)=>.5*sin(v/2),
+    zFunction: (u,v)=>(12 + .25*cos(v/2))*cos(u-(PI/4)),
+    uRange: [0, 2*PI],
+    vRange: [0, 2*PI],
+    stroke: [0, 0, 255],
+    sampleCount: 20,
+    fill: [255, 0, 255],
+    texture: "marble",
+};
+
+surfaces.push(ring9);
+
+let ring10 = {
+    xFunction: (u,v)=>.5*sin(v/2),
+    yFunction: (u,v)=>(12 + .25*cos(v/2))*cos(u-(PI/4)),
+    zFunction: (u,v)=>(12 + .25*cos(v/2))*sin(u-(PI/4)),
+    uRange: [0, 2*PI],
+    vRange: [0, 2*PI],
+    stroke: [0, 0, 255],
+    sampleCount: 20,
+    fill: [255, 0, 255],
+    texture: "marble",
+};
+
+surfaces.push(ring10);
+
+//rotation
+
+let ring11 = {
+    xFunction: (u,v)=>(.5*sin(v/2)+(12 + .25*cos(v/2))*cos(u))/sqrt(2),
+    yFunction: (u,v)=>(.5*sin(v/2)-(12 + .25*cos(v/2))*cos(u))/sqrt(2),
+    zFunction: (u,v)=>(12 + .25*cos(v/2))*sin(u),
+    uRange: [0, 2*PI],
+    vRange: [0, 2*PI],
+    stroke: [0, 0, 255],
+    sampleCount: 20,
+    fill: [255, 0, 255],
+    texture: "marble",
+};
+
+surfaces.push(ring11);
+
+`; // Maisie '22
+
+
 const exampleJulianne22 = `// Julianne '22
 
 let xyPlane = {
@@ -1187,12 +1453,14 @@ surfaces.push(helicoid);
 
 const studentExamples = [
     {name: "---", code: exampleHello},
-    {name: "Julianne '22", code: exampleJulianne22},
     {name: "Ava L '22", code: exampleAva22},
     {name: "Charlotte '22", code: exampleCharlotte22},
     {name: "Delia '22", code: exampleDelia22},
     {name: "Hannah '22", code: exampleHannah22},
+    {name: "Julianne '22", code: exampleJulianne22},
     {name: "Layla '22", code: exampleLayla22},
+    {name: "Maisie '22", code: exampleMaisie22},
+    {name: "Sadie '22", code: exampleSadie22},
     {name: "Shine '22", code: exampleShine22},
     {name: "---", code: exampleHello},
     {name: "Ellie '21", code: exampleEllie},
