@@ -3,6 +3,78 @@
 //
 
 
+const exampleNeve22 = ` // Neve '22
+
+let mysurface1 = {
+  xFunction: (u,v)=>u,
+  yFunction: (u,v)=>3*cos(u),  
+zFunction: (u,v)=>3*sin(v),
+  uRange: [-10, 10],
+  vRange: [-10, 10],
+  stroke: [100, 120, 100],
+  sampleCount: 30,
+  fill: 244
+     
+};
+
+surfaces.push(mysurface1);
+
+let wave2 = {
+  xFunction: (u,v)=>u-5,
+  yFunction: (u,v)=>3*sin(u),
+  zFunction: (u,v)=>3*cos(v) + 5,
+  uRange: [-5, 15],
+  vRange: [-10, 10],
+  stroke: [100, 120, 140],
+  sampleCount: 30,
+  fill: 244
+};
+
+surfaces.push(wave2);
+
+let wave3 = {
+  xFunction: (u,v)=>u,
+  yFunction: (u,v)=>3*sin(u),
+  zFunction: (u,v)=>3*cos(v) - 5,
+  uRange: [-10, 10],
+  vRange: [-10, -10],
+  stroke: [100, 120, 200],
+  sampleCount: 30,
+  fill: 244
+
+};
+
+surfaces.push(wave3);
+
+let sun = {
+  xFunction: (u,v)=>5 + 2.6*sin(v)*cos(u),
+    yFunction: (u,v)=>-7 + 2.6*sin(v)*sin(u),
+    zFunction: (u,v)=>5 - 2.6*cos(v),
+    uRange: [0, 2*PI],
+    vRange: [0, PI],
+    stroke: [200, 200, 0],
+  sampleCount: 40
+};
+
+surfaces.push(sun);
+
+
+let mysurface2 = {
+  xFunction: (u,v)=>u*sin(u)*sin(v),
+  yFunction: (u,v)=>v*sin(v)*sin(v),
+  zFunction: (u,v)=>10,
+  uRange: [-20,20],
+    vRange: [-20,20],
+  stroke: [200, 70, 70],
+  sampleCount: 20
+ 
+};
+
+surfaces.push(mysurface2);
+
+`; // Neve '22
+
+
 const exampleAshley23 = ` // Ashley '23
 
 //hyperbolic helicoid
@@ -1484,6 +1556,7 @@ const studentExamples = [
     {name: "Julianne '22", code: exampleJulianne22},
     {name: "Layla '22", code: exampleLayla22},
     {name: "Maisie '22", code: exampleMaisie22},
+    {name: "Neve '22", code: exampleNeve22},
     {name: "Sadie '22", code: exampleSadie22},
     {name: "Shine '22", code: exampleShine22},
     {name: "---", code: exampleHello},
